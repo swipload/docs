@@ -47,11 +47,22 @@ const config = {
           blogTitle: 'Swipload Release Notes',
           blogDescription: 'Updates on the Swipload SaaS',
           blogSidebarTitle: 'Recent updates',
-          editUrl: 'https://github.com/swipload/docs/tree/main/release-notes/',
+          editUrl: 'https://github.com/swipload/docs/tree/main/',
           path: './release-notes',
           postsPerPage: 'ALL',
           routeBasePath: 'release-notes',
           showReadingTime: false,
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} Swipload Technologies AS.`,
+            createFeedItems: async (params) => {
+              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+              return defaultCreateFeedItems({
+                blogPosts: blogPosts.filter((item, index) => index < 30),
+                ...rest,
+              });
+            },
+          },
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

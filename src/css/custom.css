@@ -91,3 +91,7 @@
   --ifm-footer-link-color: var(--ifm-color-white);
   --ifm-footer-title-color: var(--ifm-color-white);
 }
+
+a {
+  font-weight: 800;
+}

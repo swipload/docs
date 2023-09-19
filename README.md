@@ -1,41 +1,46 @@
-# Website
+<p align="center">
+  <a href="#">
+    <img alt="Swipload" src="static/img/swipload-icon.svg?raw=true" height="100" />
+  </a>
+</p>
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+<h1 align="center">
+  Swipload
+</h1>
 
-### Installation
+<p align="center">
+  Welcome to Swipload Docs
 
-```
-$ yarn
-```
+</p>
 
-### Local Development
+<p align="center">
+  <a href="https://github.com/swipload/docs/actions/workflows/deploy-pages.yml">
+    <img src="https://github.com/swipload/docs/actions/workflows/deploy-pages.yml/badge.svg?branch=main" alt="Deployment status" />
+  </a>
+  
+</p>
 
-```
-$ yarn start
-```
+## RSS Feed
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+Subscribe to our release notes via RSS. The feeds can be found at:
 
-### Build
+<Tabs>
+<TabItem value="RSS">
 
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
+```text
+https://docs.swipload.com/release-notes/rss.xml
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+</TabItem>
+<TabItem value="Atom">
+
+```text
+https://docs.swipload.com/release-notes/atom.xml
+```
+
+</TabItem>
+<TabItem value="JSON">
+
+```text
+https://docs.swipload.com/release-notes/feed.json
+```
