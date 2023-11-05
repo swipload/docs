@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent updates","items":[{"title":"Hotfix 2.51.2: Settlements","permalink":"/release-notes/2.51.2","unlisted":false},{"title":"2.51: Multi-language support","permalink":"/release-notes/2.51","unlisted":false}]}')}}]);

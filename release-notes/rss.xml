@@ -4,11 +4,45 @@
         <title>Swipload Docs Blog</title>
         <link>https://docs.swipload.com/release-notes</link>
         <description>Swipload Docs Blog</description>
-        <lastBuildDate>Thu, 21 Sep 2023 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 05 Nov 2023 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Copyright © 2023 Swipload Technologies AS.</copyright>
+        <item>
+            <title><![CDATA[3.0.0: Shipment 1.0]]></title>
+            <link>https://docs.swipload.com/release-notes/3.0.0</link>
+            <guid>https://docs.swipload.com/release-notes/3.0.0</guid>
+            <pubDate>Sun, 05 Nov 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[Features]]></description>
+            <content:encoded><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://docs.swipload.com/release-notes/3.0.0#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="shipments">Shipments<a href="https://docs.swipload.com/release-notes/3.0.0#shipments" class="hash-link" aria-label="Direct link to Shipments" title="Direct link to Shipments">​</a></h3>
+<p>Create, communicate, negotiate and get one price for multiple freight orders using a single Shipment. Order a FTL or LTL by combining multiple freight orders. A shipment can have a single or multiple pickup points and a single or multiple delivery points, and enables individual PODs for different end customers on a single shipment.</p>
+<p>Shipments support the same features as regular freight orders, like:</p>
+<ul>
+<li>Request quote from one or many carriers</li>
+<li>Send to carrier as fixed price shipment</li>
+<li>Send to carrier as time &amp; material pricing</li>
+<li>Communicate with carriers and drivers on a shipment</li>
+<li>Share to spot market for instant resolving of your shipment need</li>
+<li>Agreements, with multiple terms for your current carrier(s)</li>
+<li>Integrations with ERPs and TMSs</li>
+</ul>
+<p>and much much more.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="photo-documentation">Photo documentation<a href="https://docs.swipload.com/release-notes/3.0.0#photo-documentation" class="hash-link" aria-label="Direct link to Photo documentation" title="Direct link to Photo documentation">​</a></h3>
+<p>When signing for pickup and/or delivery you may now attach one or more photos documenting the pickup or delivery. Photos are visible for the shipper and can be presented to the end customer.</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="deviation-handling">Deviation handling<a href="https://docs.swipload.com/release-notes/3.0.0#deviation-handling" class="hash-link" aria-label="Direct link to Deviation handling" title="Direct link to Deviation handling">​</a></h3>
+<p>If a deviation occurs during the delivery process, you may now report it immediately, i.e. when signing for pickup or delivery. Attach photos to deviations for adding additional context and documentation.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug fixes<a href="https://docs.swipload.com/release-notes/3.0.0#bug-fixes" class="hash-link" aria-label="Direct link to Bug fixes" title="Direct link to Bug fixes">​</a></h2>
+<p>None</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rss-feed">RSS Feed<a href="https://docs.swipload.com/release-notes/3.0.0#rss-feed" class="hash-link" aria-label="Direct link to RSS Feed" title="Direct link to RSS Feed">​</a></h2>
+<p>Subscribe to all our release notes via RSS. The feeds can be found at:</p>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">RSS</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Atom</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">JSON</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">https://docs.swipload.com/release-notes/rss.xml</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">https://docs.swipload.com/release-notes/atom.xml</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">https://docs.swipload.com/release-notes/feed.json</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div></div></div>]]></content:encoded>
+            <category>shipper</category>
+            <category>carrier</category>
+            <category>shipment</category>
+            <category>driver</category>
+        </item>
         <item>
             <title><![CDATA[Hotfix 2.51.2: Settlements]]></title>
             <link>https://docs.swipload.com/release-notes/2.51.2</link>
