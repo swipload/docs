@@ -2,14 +2,56 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.swipload.com/release-notes</id>
     <title>Swipload Docs Blog</title>
-    <updated>2023-11-05T00:00:00.000Z</updated>
+    <updated>2023-12-03T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.swipload.com/release-notes"/>
     <subtitle>Swipload Docs Blog</subtitle>
     <icon>https://docs.swipload.com/img/favicon.png</icon>
     <rights>Copyright © 2023 Swipload Technologies AS.</rights>
     <entry>
-        <title type="html"><![CDATA[3.0.0: Shipment 1.0]]></title>
+        <title type="html"><![CDATA[Swipload 3.3.0 release notes]]></title>
+        <id>https://docs.swipload.com/release-notes/3.3.0</id>
+        <link href="https://docs.swipload.com/release-notes/3.3.0"/>
+        <updated>2023-12-03T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This release implements new pricing model for shipments, carriers vehicle reference, consignee in addition to several fixes.]]></summary>
+        <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="shipments">Shipments<a href="https://docs.swipload.com/release-notes/3.3.0#shipments" class="hash-link" aria-label="Direct link to Shipments" title="Direct link to Shipments">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features">Features<a href="https://docs.swipload.com/release-notes/3.3.0#features" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="new-pricing-model-for-shipments-base-price--expenses">New pricing model for shipments: base price + expenses<a href="https://docs.swipload.com/release-notes/3.3.0#new-pricing-model-for-shipments-base-price--expenses" class="hash-link" aria-label="Direct link to New pricing model for shipments: base price + expenses" title="Direct link to New pricing model for shipments: base price + expenses">​</a></h4>
+<p>With this you as the shipper can set a base price for the whole shipment and the carrier may add surcharges after delivery. This is typically used when an agreement exists between you as the shipper and your carrier. #2969</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="carriers-vehicle-reference-on-shipments">Carriers vehicle reference on shipments<a href="https://docs.swipload.com/release-notes/3.3.0#carriers-vehicle-reference-on-shipments" class="hash-link" aria-label="Direct link to Carriers vehicle reference on shipments" title="Direct link to Carriers vehicle reference on shipments">​</a></h4>
+<p>As carrier you can specify your vehicle number/reference on assigned shipments. This is shown to the shipper and can be used for multiple properties, like display on Bill of Laden and reports. #2958</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="add-new-freight-order-directly-on-shipment">Add new freight order directly on shipment<a href="https://docs.swipload.com/release-notes/3.3.0#add-new-freight-order-directly-on-shipment" class="hash-link" aria-label="Direct link to Add new freight order directly on shipment" title="Direct link to Add new freight order directly on shipment">​</a></h4>
+<p>In addition to merging and moving around existing freight orders on a shipment, you can now also create and add a new freight order to an existing shipment in Draft status. #2961</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fixes">Fixes<a href="https://docs.swipload.com/release-notes/3.3.0#fixes" class="hash-link" aria-label="Direct link to Fixes" title="Direct link to Fixes">​</a></h3>
+<ul>
+<li>confusing scrolling when opening a shipment. #2992</li>
+<li>attachments and pictures for freight orders shown on shipment for carrier. #3000</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="freight-orders">Freight orders<a href="https://docs.swipload.com/release-notes/3.3.0#freight-orders" class="hash-link" aria-label="Direct link to Freight orders" title="Direct link to Freight orders">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="features-1">Features<a href="https://docs.swipload.com/release-notes/3.3.0#features-1" class="hash-link" aria-label="Direct link to Features" title="Direct link to Features">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="consignee-details">Consignee details<a href="https://docs.swipload.com/release-notes/3.3.0#consignee-details" class="hash-link" aria-label="Direct link to Consignee details" title="Direct link to Consignee details">​</a></h4>
+<p>In addition to delivery location you may now specify the final <a href="https://en.wikipedia.org/wiki/Consignee" target="_blank" rel="noopener noreferrer">consignee</a>, your end-customer, on a freight order. Customise shipment list columns to add the consignee column and filter shipments on consignee. The consignee is displayed on the POD. #2959</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="load-quantity">Load quantity<a href="https://docs.swipload.com/release-notes/3.3.0#load-quantity" class="hash-link" aria-label="Direct link to Load quantity" title="Direct link to Load quantity">​</a></h4>
+<p>You may now specify a total quantity, (i.e. number of boxes) in addition to weight, loading metre (LDM), volume, pallets and dimension on a freight order. #2901</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="changes">Changes<a href="https://docs.swipload.com/release-notes/3.3.0#changes" class="hash-link" aria-label="Direct link to Changes" title="Direct link to Changes">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="simplify-address-inputupdates-even-simpler-than-before">Simplify address input/updates (even simpler than before!)<a href="https://docs.swipload.com/release-notes/3.3.0#simplify-address-inputupdates-even-simpler-than-before" class="hash-link" aria-label="Direct link to Simplify address input/updates (even simpler than before!)" title="Direct link to Simplify address input/updates (even simpler than before!)">​</a></h4>
+<p>Looking up a business name and location is super easy when creating a freight order, but modifying the address could be a challenge. We've now made it easy to manually change the pickup, delivery, and consignee address. #2262</p>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="fixes-1">Fixes<a href="https://docs.swipload.com/release-notes/3.3.0#fixes-1" class="hash-link" aria-label="Direct link to Fixes" title="Direct link to Fixes">​</a></h3>
+<ul>
+<li>error sending new freight order that happened when navigating back and forth. #2900</li>
+<li>requirements not always shown on Draft freight order. #2913</li>
+<li>POD status not always updated for drivers. #2947</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="rss-feed">RSS Feed<a href="https://docs.swipload.com/release-notes/3.3.0#rss-feed" class="hash-link" aria-label="Direct link to RSS Feed" title="Direct link to RSS Feed">​</a></h2>
+<p>Subscribe to all our release notes via RSS. The feeds can be found at:</p>
+<div class="tabs-container tabList__CuJ"><ul role="tablist" aria-orientation="horizontal" class="tabs"><li role="tab" tabindex="0" aria-selected="true" class="tabs__item tabItem_LNqP tabs__item--active">RSS</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">Atom</li><li role="tab" tabindex="-1" aria-selected="false" class="tabs__item tabItem_LNqP">JSON</li></ul><div class="margin-top--md"><div role="tabpanel" class="tabItem_Ymn6"><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">https://docs.swipload.com/release-notes/rss.xml</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">https://docs.swipload.com/release-notes/atom.xml</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div><div role="tabpanel" class="tabItem_Ymn6" hidden=""><div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">https://docs.swipload.com/release-notes/feed.json</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div></div></div></div>]]></content>
+        <category label="shipper" term="shipper"/>
+        <category label="carrier" term="carrier"/>
+        <category label="shipment" term="shipment"/>
+        <category label="freight" term="freight"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Swipload 3.0.0 release notes]]></title>
         <id>https://docs.swipload.com/release-notes/3.0.0</id>
         <link href="https://docs.swipload.com/release-notes/3.0.0"/>
         <updated>2023-11-05T00:00:00.000Z</updated>
@@ -43,11 +85,11 @@
         <category label="driver" term="driver"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Hotfix 2.51.2: Settlements]]></title>
+        <title type="html"><![CDATA[Swipload 2.51.2 release notes]]></title>
         <id>https://docs.swipload.com/release-notes/2.51.2</id>
         <link href="https://docs.swipload.com/release-notes/2.51.2"/>
         <updated>2023-09-21T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Bug fixes]]></summary>
+        <summary type="html"><![CDATA[Hotfix release for freight order settlements]]></summary>
         <content type="html"><![CDATA[<h2 class="anchor anchorWithStickyNavbar_LWe7" id="bug-fixes">Bug fixes<a href="https://docs.swipload.com/release-notes/2.51.2#bug-fixes" class="hash-link" aria-label="Direct link to Bug fixes" title="Direct link to Bug fixes">​</a></h2>
 <ul>
 <li>#2687 Issue creating final settlement for delivered freight order</li>
@@ -60,7 +102,7 @@
         <category label="driver" term="driver"/>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2.51: Multi-language support]]></title>
+        <title type="html"><![CDATA[Swipload 2.51 release notes]]></title>
         <id>https://docs.swipload.com/release-notes/2.51</id>
         <link href="https://docs.swipload.com/release-notes/2.51"/>
         <updated>2023-09-19T00:00:00.000Z</updated>

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[135],{1379:e=>{e.exports=JSON.parse('{"permalink":"/release-notes/tags/carrier","page":1,"postsPerPage":3,"totalPages":1,"totalCount":3,"blogDescription":"Updates on the Swipload SaaS","blogTitle":"Swipload Release Notes"}')}}]);

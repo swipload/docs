@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[244],{5581:e=>{e.exports=JSON.parse('{"permalink":"/release-notes/tags/freight","page":1,"postsPerPage":1,"totalPages":1,"totalCount":1,"blogDescription":"Updates on the Swipload SaaS","blogTitle":"Swipload Release Notes"}')}}]);
