@@ -1,0 +1,84 @@
+---
+slug: 3.3.0
+title: Swipload 3.3.0 release notes
+description: This release implements new pricing model for shipments, carriers vehicle reference, consignee in addition to several fixes.
+tags: [shipper, carrier, shipment, freight]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Shipments
+
+### Features
+
+#### New pricing model for shipments: base price + expenses
+
+With this you as the shipper can set a base price for the whole shipment and the carrier may add surcharges after delivery. This is typically used when an agreement exists between you as the shipper and your carrier. #2969
+
+#### Carriers vehicle reference on shipments
+
+As carrier you can specify your vehicle number/reference on assigned shipments. This is shown to the shipper and can be used for multiple properties, like display on Bill of Laden and reports. #2958
+
+#### Add new freight order directly on shipment
+
+In addition to merging and moving around existing freight orders on a shipment, you can now also create and add a new freight order to an existing shipment in Draft status. #2961
+
+### Fixes
+
+- confusing scrolling when opening a shipment. #2992
+- attachments and pictures for freight orders shown on shipment for carrier. #3000
+
+## Freight orders
+
+### Features
+
+#### Consignee details
+
+In addition to delivery location you may now specify the final [consignee](https://en.wikipedia.org/wiki/Consignee), your end-customer, on a freight order. Customise shipment list columns to add the consignee column and filter shipments on consignee. The consignee is displayed on the POD. #2959
+
+#### Load quantity
+
+You may now specify a total quantity, (i.e. number of boxes) in addition to weight, loading metre (LDM), volume, pallets and dimension on a freight order. #2901
+
+### Changes
+
+#### Simplify address input/updates (even simpler than before!)
+
+Looking up a business name and location is super easy when creating a freight order, but modifying the address could be a challenge. We've now made it easy to manually change the pickup, delivery, and consignee address. #2262
+
+### Fixes
+
+- error sending new freight order that happened when navigating back and forth. #2900
+- requirements not always shown on Draft freight order. #2913
+- POD status not always updated for drivers. #2947
+
+<!--truncate-->
+
+## RSS Feed
+
+Subscribe to all our release notes via RSS. The feeds can be found at:
+
+<Tabs>
+<TabItem value="RSS">
+
+```text
+https://docs.swipload.com/release-notes/rss.xml
+```
+
+</TabItem>
+<TabItem value="Atom">
+
+```text
+https://docs.swipload.com/release-notes/atom.xml
+```
+
+</TabItem>
+<TabItem value="JSON">
+
+```text
+https://docs.swipload.com/release-notes/feed.json
+```
+
+</TabItem>
+</Tabs>
