@@ -1,0 +1,79 @@
+---
+slug: 3.4.0
+title: Swipload 3.4.0 release notes
+description: This release add new features for shippers and carriers and fixes several issues in the UI .
+tags: [shipper, carrier, shipment, freight, fixes]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Shipments
+
+### Features
+
+#### Shippers can now set "Base price + expenses" as a default price format for a Carrier #3007
+
+#### Agreements will now also affect Shipment
+
+Most importantly, Shippers will now be able to edit Freights that are a part of Shipments according to the existing agreement rule that allows changes to be made until given status. #3033
+
+#### Carriers now see new price type "Base price + expenses" when filtering their Shipment lists #2990
+
+#### Will be easier for Shipper to compare prices of different freights
+
+We now display price / kg on the Shipment page. #2962
+
+### Changes
+
+#### Phone number prefix no longer based on IP-address
+
+No longer show a user an incorrect flag icon / prefix when inputting phone numbers, as these were based on VPN / ISPs IP-address #2942
+
+#### More information when a price is changed
+
+Shipment log will now show what price was changed from and to. #2953
+
+#### Easier to see which Freight orders have deviations from the POD-list #2973
+
+#### Shippers now prompted if they really want to send a Shipment with the default price format #3004
+
+### Fixes
+
+- Shippers can clearly see where/how to edit the price of a shipment. #2930
+- User can no longer open multiple context menus #2858
+- Deviation icon no longer covers up other icons on freight ribbons #2931
+- Anonymous users will now see status of freights updated upon signing #3012
+- Stop showing zeroes ("0") when shipper hasn't input a value for freight dimensions (for example weight or LDM) #3017
+- No longer presented with the option to remove a freight from its original shipment #3019
+- Freight shippers now get same context menu options as Shipment shippers #2875
+
+<!--truncate-->
+
+## RSS Feed
+
+Subscribe to all our release notes via RSS. The feeds can be found at:
+
+<Tabs>
+<TabItem value="RSS">
+
+```text
+https://docs.swipload.com/release-notes/rss.xml
+```
+
+</TabItem>
+<TabItem value="Atom">
+
+```text
+https://docs.swipload.com/release-notes/atom.xml
+```
+
+</TabItem>
+<TabItem value="JSON">
+
+```text
+https://docs.swipload.com/release-notes/feed.json
+```
+
+</TabItem>
+</Tabs>
