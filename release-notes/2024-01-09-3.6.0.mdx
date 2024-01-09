@@ -1,0 +1,73 @@
+---
+slug: 3.6.0
+title: Swipload 3.6.0 release notes
+description: This release simplifies creation and editing of freight orders, removes the Confirm details step, and increases performance.
+tags: [shipper, shipment, freight]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## Shipments
+
+### Features
+
+#### Skip the "Confirm details" step on freight orders when sending a shipment to a carrier
+
+With all details already in place with the [redesigned create / edit freight order page](#redesigned-create-/-edit-freight-order-page), this step can be skipped after sending to carrier. #2704
+
+#### More customisable shipments list
+
+ShipmentRef, SwipRef and freight order status are now optional columns in the shipments table list view. #2948
+
+### Fixes
+
+- minor UI design improvements on shipments.
+
+## Freight orders
+
+### Features
+
+#### Drag n' drop photos and attachments onto a freight order
+
+Previously you had to click the upload button when creating or editing a freight order, now you can instead drop the #2959
+
+### Changes
+
+#### Redesigned create / edit freight order page
+
+Adds pickup and delivery details to the create and edit form. This includes contact details and information to driver that is also visible on the POD. #2257
+
+## Performance improvements
+
+- browsing pages after initial load is faster. #2893
+
+<!--truncate-->
+
+## RSS Feed
+
+Subscribe to all our release notes via RSS. The feeds can be found at:
+
+<Tabs>
+<TabItem value="RSS">
+
+```text
+https://docs.swipload.com/release-notes/rss.xml
+```
+
+</TabItem>
+<TabItem value="Atom">
+
+```text
+https://docs.swipload.com/release-notes/atom.xml
+```
+
+</TabItem>
+<TabItem value="JSON">
+
+```text
+https://docs.swipload.com/release-notes/feed.json
+```
+
+</TabItem>
+</Tabs>
