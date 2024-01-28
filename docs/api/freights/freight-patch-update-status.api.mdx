@@ -1,0 +1,517 @@
+---
+id: freight-patch-update-status
+title: "Update freight status using patch"
+description: "Update freight status using Swipref. Called from Carrier's TMS."
+sidebar_label: "Update freight status using patch"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWG1zGjcQ/isa9UPfAGNMpwmfSnAydZvU1OCZTlt/EHcLp/hOukg6Y8rw37sr3cGBMbabTvuFeCYI3Wpfn31u0ZI7MbO89wd/Z0DOEsdvGjwGGxmZO6kV7/HrPBYO2DQ8Z9YJV1hWWKlmbDSXuYFpiw1EmkKMQjrDtTESzJeWjT+MWrzBdQ5GkLaLGPWVhobCRUnQPfIqUdDApwKse6PjBe8teaSVA+VoKfI8lZFXcvLRkl9LbqMEMkErOicNxBQHugMGVASoL/iKVhvcyYzsZDkF6BY5oCd68hEihw9zQy46CTZoqzTgl0yq96BmLuG90/VB6wxGz3czNU6gykiDCVYoieEwGTOp/H6qBbkC9+hGSnoufxv8enrW5auaq2gTVJFRKBdqbISyklw8h1TeAcV485Qbb/E4m2rD3m2VDCxziXAsEopNgBU+9TGbLBjcOzBKpMwurIPMUs3um+TFLyIDe9CVINe8E6ggC/mjBblRag01Ln0JpR7omMqT4Ufat6MQRs+ZAlakMbPNkILP1uWkS59zflUHCJp9os4oakmU6WnVD1Ei1IwcwcRnAjHLyVKTtG6VvNPudJvtV81OZ3x61mu3f/fFlzMF8LRhKgfZRLBiDzA6Rl1Itc5ldFvkJ3GozYJ9dekPifRr1KKKNBUTsk95qbvzk04UO9c+A5HOsrLdDrsxCILPtTGfz1vOiOgWdRUmbaEdvkJ7Io5lOD+s9d9UpBZ2Lb4RFliUCmvrwOabAm+VNFT5KpCJN+UQ4kfeOPLGkTeOvPES3qiPHd98eySQI4EcCeRIIM8mkFWjxhAlMgzYXCsbENtpt+lj2+Z29zBbRBFYO8UwF1XzUKP8o19HMvY/s/Yw1ZPsJONagSTanoF5UKH+o+SzhicePevUofnqdees2zldNf5DAjwfXo66r7/vPMaA50ZMKQVDUDEa7OeYizuR4s5lDgo/9vOSX4Pzq/LoOTghU7vZGPqGwe8DgZHSz2ZcX4HA37xPMuwONDBAcngPbf5v/j9Oy59HxC+n3r1kG4W7CXtVR9rhnL+XSOH4jlqDk9JuEz1XhK7w5mJCEdbutIygdZCTPixGC7L+Rbf93UvJqL++hNEm9s13kIUCzxANoZnuIaZR2iG9FSpuUBAipQAr8iFqAXyA7LfzuvbHYphK9UJCOswz4enDqmzndFPoZ0iGYPbS1wNaenA49g3wLDtSoaVHQLUj/GjllzUI4z6eyKoWrCp5+rCS/Vw2nb4FxTJp/dUc1utaicIl2si/cNyKsIwqTLUZ4C5dxeV0B0cFEMSy/KTEw4mtLuQsRIWRboGUsiQbPwMtb1Y3m0cjKmuoXCWwDl6EjQc43jhbWMcQLCAMNZNDGk+QSXxlysYXlTCn/OJGKUCBELSuNneGb6su2xql18Nunem3+K82ge0ZkzZT0mZoqc0s+6cM8nWqfSrKWlavodYFYS/ch9oWpqLsHBG5Gt1V0myEDagNeYnNQzDk2JI/2EqZ0mQLyduG1N616XuurcuEquk7dIlboWCrSLXb13/hBrjEg7+GyVOBdUQvMVlkJ4BvcwG9blcEWYKB0LPlcoKD2LVJVyvaxoobD0QMXRgZ2gph2ajAQXC9JSjiyOijaI7JAxJPi4CqHYJaNaoTfRy3cndQ9qbWQ8P+ePAjSk/KS2t6KeG2EXOatPD/Hv8T//w1uK+5hyftL3mKo3shZiQfFNO/vwGgIjGS
+sidebar_class_name: "patch api-method"
+info_path: docs/api/freights/swipload-integrations-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Update freight status using patch
+</h1>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/Freight/status"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update freight status using Swipref. Called from Carrier's TMS.
+
+## Request
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+  schemaType={"request"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"statusId"}
+          required={true}
+          schemaName={"ExternalUpdateFreightStatusCode"}
+          qualifierMessage={"**Possible values:** [`InTransit`, `Delivered`]"}
+          schema={{"enum":["InTransit","Delivered"],"type":"string","description":"Enum for Freight statuses that can be updated by external systems.","x-enumNames":["InTransit","Delivered"],"x-enum-varnames":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"title":"ExternalUpdateFreightStatusCode"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"timeStamp"}
+          required={true}
+          schemaName={"date-time"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Timestamp of status change","format":"date-time","example":"2024-08-22T13:00Z"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"signee"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Name of person signing for pickup/delivery (Optional)","nullable":true,"example":"John Doe"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"comment"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Comment (Optional)","nullable":true,"example":"www.trackingurl.com"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem><TabItem
+    label={"text/json"}
+    value={"text/json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"statusId"}
+          required={true}
+          schemaName={"ExternalUpdateFreightStatusCode"}
+          qualifierMessage={"**Possible values:** [`InTransit`, `Delivered`]"}
+          schema={{"enum":["InTransit","Delivered"],"type":"string","description":"Enum for Freight statuses that can be updated by external systems.","x-enumNames":["InTransit","Delivered"],"x-enum-varnames":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"title":"ExternalUpdateFreightStatusCode"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"timeStamp"}
+          required={true}
+          schemaName={"date-time"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Timestamp of status change","format":"date-time","example":"2024-08-22T13:00Z"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"signee"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Name of person signing for pickup/delivery (Optional)","nullable":true,"example":"John Doe"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"comment"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Comment (Optional)","nullable":true,"example":"www.trackingurl.com"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem><TabItem
+    label={"application/*+json"}
+    value={"application/*+json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"statusId"}
+          required={true}
+          schemaName={"ExternalUpdateFreightStatusCode"}
+          qualifierMessage={"**Possible values:** [`InTransit`, `Delivered`]"}
+          schema={{"enum":["InTransit","Delivered"],"type":"string","description":"Enum for Freight statuses that can be updated by external systems.","x-enumNames":["InTransit","Delivered"],"x-enum-varnames":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"title":"ExternalUpdateFreightStatusCode"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"timeStamp"}
+          required={true}
+          schemaName={"date-time"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Timestamp of status change","format":"date-time","example":"2024-08-22T13:00Z"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"signee"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Name of person signing for pickup/delivery (Optional)","nullable":true,"example":"John Doe"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"comment"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"Comment (Optional)","nullable":true,"example":"www.trackingurl.com"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Freight status successfully updated.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={true}
+                        schemaName={"int32"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"reference"}
+                        required={true}
+                        schemaName={"string"}
+                        qualifierMessage={"**Possible values:** `non-empty`"}
+                        schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"DPOS4972"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"statusId"}
+                        required={true}
+                        schemaName={"FreightStatusCode"}
+                        qualifierMessage={"**Possible values:** [`Draft`, `PendingApproval`, `Open`, `InTransit`, `Delivered`, `Deleted`, `PendingDetails`, `PendingPickup`, `Cancelled`, `Ready`]"}
+                        schema={{"enum":["Draft","PendingApproval","Open","InTransit","Delivered","Deleted","PendingDetails","PendingPickup","Cancelled","Ready"],"type":"string","description":"Freight status id enum.","x-enumNames":["Draft","PendingApproval","Open","InTransit","Delivered","Deleted","PendingDetails","PendingPickup","Cancelled","Ready"],"x-enum-varnames":{"name":"FreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"FreightStatusCode","modelAsString":true},"title":"FreightStatusCode"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"carriersReference"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","description":"Literal reference id shown in system and invoice.","nullable":true,"example":"MySysRef#405"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"id\": 8923421,\n  \"reference\": \"DPOS4972\",\n  \"statusId\": \"Draft\",\n  \"carriersReference\": \"MySysRef#405\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Freight not found, invalid status supplied, or external system not defined.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"type"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"int32"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","format":"int32","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"instance"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Api-token missing or Unauthorized client
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

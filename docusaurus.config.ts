@@ -36,11 +36,10 @@ const config: Config = {
       'classic',
       {
         docs: {
-          sidebarPath: './sidebars.ts',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          sidebarPath: require.resolve('./sidebars.js'),
+          editUrl: 'https://github.com/swipload/docs/tree/main/',
+          // docLayoutComponent: "@theme/DocPage",
+          docItemComponent: '@theme/ApiItem', // derived from docusaurus-theme-openapi-docs
         },
         blog: {
           blogTitle: 'Swipload Release Notes',
@@ -70,6 +69,30 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: 'api', // plugin id
+        docsPluginId: 'classic', // id of plugin-content-docs or preset for rendering docs
+        config: {
+          freights: {
+            // the <id> referenced when running CLI commands
+            specPath: 'openapis/freights/swagger.yaml', // path to OpenAPI spec, URLs supported
+            outputDir: 'docs/api/freights', // output directory for generated files
+            sidebarOptions: {
+              // optional, instructs plugin to generate sidebar.js
+              groupPathsBy: 'tag', // group sidebar items by operation "tag"
+              categoryLinkSource: 'tag',
+            },
+          },
+        },
+      },
+    ],
+  ],
+
+  themes: ['docusaurus-theme-openapi-docs'],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/social-card.png',
@@ -82,13 +105,19 @@ const config: Config = {
         width: 132,
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
         {to: '/release-notes', label: 'Release notes', position: 'left'},
+        {
+          type: 'dropdown',
+          label: 'API',
+          position: 'left',
+          items: [
+            {
+              label: 'Freights',
+              type: 'docSidebar',
+              sidebarId: 'tutorialSidebar',
+            },
+          ],
+        },
         {
           href: 'https://github.com/swipload/docs',
           label: 'GitHub',
@@ -99,7 +128,7 @@ const config: Config = {
     footer: {
       style: 'dark',
       links: [
-                {
+        {
           title: 'Company',
           items: [
             {
@@ -114,6 +143,10 @@ const config: Config = {
             {
               label: 'Login',
               to: 'https://app.swipload.no',
+            },
+            {
+              label: 'API',
+              to: '/docs/api/freights',
             },
             {
               label: 'Check Status',
