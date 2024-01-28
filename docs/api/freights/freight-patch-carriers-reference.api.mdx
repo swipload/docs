@@ -1,0 +1,427 @@
+---
+id: freight-patch-carriers-reference
+title: "Update Carriers Reference"
+description: "Update carriersReference."
+sidebar_label: "Update Carriers Reference"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV91v2kAM/1dO97ilH0AfNp5G2aZVm7SOttKkjgeTGLg2uWR3l34syv8++5JA+GqZ9gpIEIzP/tn+2XEK6WBmZf9WfjaoZnMnx4GM0IZGZU6lWvblTRaBQxGCMQqNHeEUDeoQj2Ug0wwNsN5FRJq1iUtw4Xy4rk7aBn/naN15Gj3LfiHDVDvUji8hy2IVeksnd5bdFtKGc0yAr/icMhgxzA0YDNg9Z0j+08kdho4cZYaBOYWWj08rWAyxaFQVuZ6hkevBDkSuFaEUKhJKi6tHlcUpRKQ3TU0Crjra65JA53EMk5isOZNjIPEJkox/vnvf7Z11O2WwBSwhSJT+hnrm5rLfWUC3zig924BzPUfRZFIsrIgLBrTwJzudbg8mYURfsuQ0t7y9bp9jpCOBgJ2x7wxVfv85/NHpncmS/EIUKbYL8WUr/1OILa77PQdLjIrBWkF5FQ33KB3Kebu1ZINFFRlHFZG8V4dP7sCZA2f+hTPtcfPm7YE8B/LsTZ4yaLGDwXmBzVJtq+J3T0/5a9X9hllh8zBEa6cU6LPIvZOI76h73xTXKfhiMpooByGrjNDmsQ+GwJ9tw1tnQ+jUUb5yHQVUoAeIqVCEFAg9Y0MSUzJpAKMhv8I+W4eJPxThVOn/jGi1qap/N/m1SpVyEesemtaBy+3WJn2l+UrmlwMV7+VHafK0oz3WlHeyulhGJklOJ5KPHoFd1LGzWcdBpo5ceo9aJMpa8sj1utGQu3lq1B+MqCcUF4ctJEhS3uMyXuC4AMAzQ57UbDhppotp7XQWw9woRwvdbcHuviJfjsvx8q8rrnBVxEZhkQeoBBtTcYk7t04QbxAMzwhH82OOEPkiaUhqG5Wy5FSToFbgmJhlo+Xa+amZIytDup6fW8fnyqxbGXXLUcRup6mPqq5QM8qOL5hR1Ypsjymquh8g9P1QB9Boiytqq9Qw96klmFySGu2DbYzplH09EMAqSw+n/DtLrUtAt+zVG/vmHF/Pc2sHf3HNr4vlV60sBkoy+c2NZ39FkuXzwzKLpn3HnBNKViuKCY3iGxOXJYupMsYThuICo6pOIPoETRGZVvdMGTmsoB5dMxhWj/Oq+mszpQyaEwMasZl7UXfcov3l4Hr4hbQn9fNJkkZ8yMAjF54++/IXvf1jjy+oXxVYXsgY9CyHGetXhvn1F6snoSo=
+sidebar_class_name: "patch api-method"
+info_path: docs/api/freights/swipload-integrations-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Update Carriers Reference
+</h1>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/Freight/carriersreference"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update carriersReference.
+
+## Request
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+  schemaType={"request"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"freightId"}
+          required={false}
+          schemaName={"int32"}
+          qualifierMessage={undefined}
+          schema={{"type":"integer","description":"A unique id in Swipload","format":"int32","nullable":true,"example":8923421}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"carriersReference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Carriers Reference Id","example":"1123abcd123"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The Swipref, a unique id in Swipload","nullable":true,"example":"OXCQ134"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem><TabItem
+    label={"text/json"}
+    value={"text/json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"freightId"}
+          required={false}
+          schemaName={"int32"}
+          qualifierMessage={undefined}
+          schema={{"type":"integer","description":"A unique id in Swipload","format":"int32","nullable":true,"example":8923421}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"carriersReference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Carriers Reference Id","example":"1123abcd123"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The Swipref, a unique id in Swipload","nullable":true,"example":"OXCQ134"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem><TabItem
+    label={"application/*+json"}
+    value={"application/*+json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"freightId"}
+          required={false}
+          schemaName={"int32"}
+          qualifierMessage={undefined}
+          schema={{"type":"integer","description":"A unique id in Swipload","format":"int32","nullable":true,"example":8923421}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"carriersReference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Carriers Reference Id","example":"1123abcd123"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={false}
+          schemaName={"string"}
+          qualifierMessage={undefined}
+          schema={{"type":"string","description":"The Swipref, a unique id in Swipload","nullable":true,"example":"OXCQ134"}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          CarriersReference successfully updated.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Freight not found, invalid data supplied, or external system not defined.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"type"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"int32"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","format":"int32","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"instance"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Api-token missing or Unauthorized client
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

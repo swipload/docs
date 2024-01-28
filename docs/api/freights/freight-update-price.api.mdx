@@ -1,0 +1,400 @@
+---
+id: freight-update-price
+title: "Update the price on a Freight. Only works for Freights that are not part of a Shipment."
+description: "Update price. Called from Azure Logic App."
+sidebar_label: "Update the price on a Freight. Only works for Freights that are not part of a Shipment."
+hide_title: true
+hide_table_of_contents: true
+api: eJztVstuGzcU/RWCy3YiW4670aqK26JBA8T1AyiQenE1c6VhzCFZPuwoA/177iVn5LHsBi66aBexAGvEue9zeMheRtgEufggf/GoNm2UN5VsMNReuaiskQt57RqIKJxXNc7EGWiNjVh724nl5+RRvLMbVYulczNZSevQAzu+bch1iFkinHMAMvH4V8IQ39hmKxe9rK2JaCI/gnNa1dn96GPg5L0MdYsd8BP7KY8NF+v2sdbo0dAzlR23DimpXX3EOtJL57maqDAU99GUfnTKvEOzia1czPeOIXplNvKw/6sWxeW9chSgEiCSUVS/UI1QJq9rCw054SfonOY47/84+33++lTuqqFOSjikMKlboX+SYhzN2voOaBSysWmlcRp1fvrDbH6yo5jQNIr9QJ9PGlyDDngY9w0EFLWGEASFFiPE1LGKudRhJecvKF0UdCRnivgpfgPifwDEdGN89/03RP5rRHbVZOTRJ8wLwVkTykRPjo/565lWREh1jSGsk9ZbkXLghpXzxTp4iOVXmx67WdZscoEh6dwAFXz6XI1D18LYSHNJpqlI6ssSaI/QbEULoRwGFcF8B5rgpiaAGuOykTxonqQc6KkkEbYhYpfjNbhW5l82+5i45W3/hKWGhgvMkhGcYQwvsAwRYpoEl4oq3WRi7ilIS69PnnNuMILSL8qjDGUy9UuK+lti9w+dEbkseXQ/5QrCHuL5U4iXTr2K9haN6FQIlJHxujaQYmu9+kyHe00wmqI8HdIqH+UOYt0yAMDKII8GohwVBo+iE7BOXkU62D/0nOg35Meb3c3Dq0vGtsA3GuwnAGXhcK9OKk6BiOgcgmeNiaQ/LZEyw2OgG2IUY8lDpoXBgLthfl08XD9+HhXkkQTuRWqvUYPAcLy1zeUOQx81bvaWSVIuPmFG5Q4UhzpTfKhstBaXtFOsZzoTy5kvkvbOj2EMZizr4x36UNq/O856aUPswEziDRczHkIuVFhDIjwAMxPvDQnMvfW3jxQukD3QDOnixnvSgY/CrsnvslWuI9hnh+OfXNH+2V1wADXfIpwGAoPaSD7vj0Kjh1snvZgQiejSUrts0PcrUuprr3c7XibsfKYUDQi8KruECFaNMDPxbplU8qxU/eqKy2BznQo/DvRmV40eS1JmF79qezPZEufLq7NfyXo13GQ727CTh3s+fun/Qv5Jn3wrzszIROP1XmowmwQbti+B+e8LWuH84w==
+sidebar_class_name: "patch api-method"
+info_path: docs/api/freights/swipload-integrations-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<h1
+  className={"openapi__heading"}
+>
+  Update the price on a Freight. Only works for Freights that are not part of a Shipment.
+</h1>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/Freight/updateprice"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update price. Called from Azure Logic App.
+
+## Request
+
+<MimeTabs
+  className={"openapi-tabs__mime"}
+  schemaType={"request"}
+>
+  <TabItem
+    label={"application/json"}
+    value={"application/json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"price"}
+          required={true}
+          schemaName={"double"}
+          qualifierMessage={undefined}
+          schema={{"type":"number","description":"Price","format":"double","example":145.12}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem><TabItem
+    label={"text/json"}
+    value={"text/json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"price"}
+          required={true}
+          schemaName={"double"}
+          qualifierMessage={undefined}
+          schema={{"type":"number","description":"Price","format":"double","example":145.12}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem><TabItem
+    label={"application/*+json"}
+    value={"application/*+json"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3><span
+          className={"openapi-schema__required"}
+        >
+          required
+        </span>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <SchemaItem
+          collapsible={false}
+          name={"reference"}
+          required={true}
+          schemaName={"string"}
+          qualifierMessage={"**Possible values:** `non-empty`"}
+          schema={{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"}}
+        >
+          
+        </SchemaItem><SchemaItem
+          collapsible={false}
+          name={"price"}
+          required={true}
+          schemaName={"double"}
+          qualifierMessage={undefined}
+          schema={{"type":"number","description":"Price","format":"double","example":145.12}}
+        >
+          
+        </SchemaItem>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Price successfully updated.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"400"}
+        value={"400"}
+      >
+        <div>
+          
+          
+          Freight not found, freight already has price, invalid data supplied, or external system not defined.
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"type"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"int32"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","format":"int32","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"instance"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string","nullable":true}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"type\": \"string\",\n  \"title\": \"string\",\n  \"status\": 0,\n  \"detail\": \"string\",\n  \"instance\": \"string\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"401"}
+        value={"401"}
+      >
+        <div>
+          
+          
+          Api-token missing or Unauthorized client
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

@@ -1,0 +1,765 @@
+openapi: 3.0.1
+info:
+  title: Swipload.Integrations.Api
+  contact:
+    name: Swipload Support
+    email: sup@swipload.no
+  version: v0
+paths:
+  /Freight:
+    post:
+      tags:
+        - Freight
+      summary: Create a freight
+      description: Create a freight using your unique id as `ExternalId`. Called from Shipper's TMS.
+      operationId: FreightCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightPostRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightPostRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightPostRequest'
+        required: true
+      responses:
+        '200':
+          description: Freight successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightPostResponse'
+        '400':
+          description: External system not defined or Freight with ExternalId already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /Freight/status:
+    patch:
+      tags:
+        - Freight
+      summary: Update freight status using patch
+      description: Update freight status using Swipref. Called from Carrier's TMS.
+      operationId: FreightPatchUpdateStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightStatusUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightStatusUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightStatusUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: Freight status successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightStatusUpdateResponse'
+        '400':
+          description: 'Freight not found, invalid status supplied, or external system not defined.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+    put:
+      tags:
+        - Freight
+      summary: Update freight status using put
+      description: Update freight status using Swipref. Called from Carrier's TMS.
+      operationId: FreightPutUpdateStatus
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightStatusUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightStatusUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightStatusUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: Freight status successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightStatusUpdateResponse'
+        '400':
+          description: 'Freight not found, invalid status supplied, or external system not defined.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /Freight/freightlog:
+    put:
+      tags:
+        - Freight
+      summary: Update freight log when FTP action succeeds in logic app
+      description: Update freight log. Called from Azure Logic App.
+      operationId: FreightPutFreightLog
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightLogUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightLogUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightLogUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: Freight log successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: 'Freight not found, invalid data supplied, or external system not defined.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /Freight/carriersreference:
+    patch:
+      tags:
+        - Freight
+      summary: Update Carriers Reference
+      description: Update carriersReference.
+      operationId: FreightPatchCarriersReference
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightCarriersReferenceUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightCarriersReferenceUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightCarriersReferenceUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: CarriersReference successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: 'Freight not found, invalid data supplied, or external system not defined.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /Freight/shippersreference:
+    patch:
+      tags:
+        - Freight
+      summary: Update Shippers Reference
+      description: Update shippersReference.
+      operationId: FreightPatchShippersReference
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightShippersReferenceUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightShippersReferenceUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightShippersReferenceUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: ShippersReference successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: 'Freight not found, invalid data supplied, or external system not defined.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /Freight/updateprice:
+    patch:
+      tags:
+        - Freight
+      summary: Update the price on a Freight. Only works for Freights that are not part of a Shipment.
+      description: Update price. Called from Azure Logic App.
+      operationId: FreightUpdatePrice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightPriceUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightPriceUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightPriceUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: Price successfully updated.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResult'
+        '400':
+          description: 'Freight not found, freight already has price, invalid data supplied, or external system not defined.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+components:
+  schemas:
+    ActionResult:
+      type: object
+      additionalProperties: false
+    ExternalUpdateFreightStatusCode:
+      enum:
+        - InTransit
+        - Delivered
+      type: string
+      description: Enum for Freight statuses that can be updated by external systems.
+      x-enumNames:
+        - InTransit
+        - Delivered
+      x-enum-varnames:
+        name: ExternalUpdateFreightStatusCode
+        modelAsString: true
+      x-ms-enum:
+        name: ExternalUpdateFreightStatusCode
+        modelAsString: true
+    FreightCarriersReferenceUpdateRequest:
+      required:
+        - carriersReference
+      type: object
+      properties:
+        freightId:
+          type: integer
+          description: A unique id in Swipload
+          format: int32
+          nullable: true
+          example: 8923421
+        carriersReference:
+          minLength: 1
+          type: string
+          description: The Carriers Reference Id
+          example: 1123abcd123
+        reference:
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          nullable: true
+          example: OXCQ134
+      additionalProperties: false
+      description: Base class for Freight
+    FreightLocationDto:
+      type: object
+      properties:
+        address:
+          type: string
+          nullable: true
+        zipCode:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        countryCode:
+          type: string
+          nullable: true
+        latitude:
+          type: number
+          format: double
+          nullable: true
+        longitude:
+          type: number
+          format: double
+          nullable: true
+        contactCompany:
+          type: string
+          nullable: true
+        timeFlexibility:
+          $ref: '#/components/schemas/TimeFlexibility'
+        fromDate:
+          type: string
+          format: date-time
+        toDate:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    FreightLogUpdateRequest:
+      required:
+        - freightId
+        - logType
+      type: object
+      properties:
+        freightId:
+          type: integer
+          description: A unique id in Swipload
+          format: int32
+          example: 8923421
+        logType:
+          $ref: '#/components/schemas/LogType'
+        logText:
+          type: string
+          description: 'The LogText, a text that is added to the Freights log'
+          nullable: true
+          example: This is some important text
+      additionalProperties: false
+      description: Base class for Freight
+    FreightPostRequest:
+      required:
+        - allowClosedTrailer
+        - allowOpenTrailer
+        - allowVehicleCarAndTrailer
+        - allowVehicleSemi
+        - allowVehicleVan
+        - deliveryLocation
+        - externalId
+        - isPrivate
+        - isStackable
+        - jobDescription
+        - pickupLocation
+        - recipientContactCompany
+        - recipientContactPerson
+        - senderContactPerson
+      type: object
+      properties:
+        externalId:
+          minLength: 1
+          type: string
+          description: Unique freight id in source system
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        externalShipmentId:
+          type: string
+          description: Unique shipment id in source system
+          nullable: true
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        statusId:
+          $ref: '#/components/schemas/FreightStatusCode'
+        shippersReference:
+          type: string
+          description: Literal reference identification shown in system and invoice.
+          nullable: true
+          example: MySysRef#405
+        consigneesReference:
+          type: string
+          description: Consignees reference on Freight.
+          nullable: true
+          example: '6427316'
+        consignorsReference:
+          type: string
+          description: Consignors eference on Freight.
+          nullable: true
+          example: G1444-45
+        assignee:
+          type: string
+          description: User identifier for owner / assignee of freight in Swipload
+          nullable: true
+          example: albrektm
+        senderContactCompany:
+          type: string
+          description: Sender company name
+          nullable: true
+          example: Our company AS
+        senderContactPerson:
+          minLength: 1
+          type: string
+          description: Sender contact person name
+          example: John Doe
+        senderContactCellphone:
+          type: string
+          description: 'Sender contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          nullable: true
+          example: '+4740484410'
+        recipientContactCompany:
+          minLength: 1
+          type: string
+          description: Receiving company name
+          example: Cargo Receiver AS
+        recipientContactPerson:
+          minLength: 1
+          type: string
+          description: Receiving contact person name
+          example: Jane Doe
+        recipientContactCellphone:
+          type: string
+          description: 'Receiving contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          nullable: true
+          example: '+4740484410'
+        pickupLocation:
+          $ref: '#/components/schemas/FreightLocationDto'
+        deliveryLocation:
+          $ref: '#/components/schemas/FreightLocationDto'
+        additionalInfo:
+          type: string
+          description: Deprecated. Use PickupComment and/or DeliveryComment instead
+          nullable: true
+          deprecated: true
+        pickupComment:
+          type: string
+          description: Additional pickup details
+          nullable: true
+          example: Please contact sender when it comes to the departure day.
+        deliveryComment:
+          type: string
+          description: Additional delivery details
+          nullable: true
+          example: Contact warehouse manager for instructions where to unload the goods.
+        sumQty:
+          type: integer
+          description: Total quantity
+          format: int32
+          nullable: true
+          example: 1
+        sumWeight:
+          type: number
+          description: Total weight in kilograms
+          format: double
+          nullable: true
+          example: 1200
+        sumVolume:
+          type: number
+          description: Total volume in m^3
+          format: double
+          nullable: true
+          example: 12
+        length:
+          type: integer
+          description: Length in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 230
+        width:
+          type: integer
+          description: Width in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 60
+        height:
+          type: integer
+          description: Height in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 192
+        jobDescription:
+          minLength: 1
+          type: string
+          description: Description of the order
+          example: A blue container filled with rocks. Ready at the terminal on given time. Remember to always drive carefully - stay safe!
+        dueDate:
+          type: string
+          description: Expiration date
+          format: date-time
+          nullable: true
+          example: '2024-08-22T13:00Z'
+        price:
+          type: number
+          description: Price in NOK
+          format: double
+          nullable: true
+        sumPallets:
+          type: number
+          description: Total pallets
+          format: double
+          nullable: true
+          example: 3
+        sumLoadingMeters:
+          type: number
+          description: Total loading meters
+          format: double
+          nullable: true
+          example: 9
+        sumChargeableWeight:
+          type: number
+          description: Total chargeable weight in kilograms
+          format: double
+          nullable: true
+          example: 1200
+        isStackable:
+          type: boolean
+          description: Stackable
+          example: false
+        allowVehicleSemi:
+          type: boolean
+        allowVehicleCarAndTrailer:
+          type: boolean
+        allowOpenTrailer:
+          type: boolean
+        allowClosedTrailer:
+          type: boolean
+        allowVehicleVan:
+          type: boolean
+        isPrivate:
+          type: boolean
+      additionalProperties: false
+      description: A freight order for transport
+    FreightPostResponse:
+      required:
+        - externalId
+      type: object
+      properties:
+        externalId:
+          minLength: 1
+          type: string
+          description: Unique freight id in source system
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        externalShipmentId:
+          type: string
+          description: Unique shipment id in source system
+          nullable: true
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        id:
+          type: integer
+          description: A unique id in Swipload
+          format: int32
+          example: 8923421
+        shipmentId:
+          type: integer
+          description: Shipment id in Swipload
+          format: int32
+          example: 53430964
+        reference:
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          nullable: true
+          example: DPOS4972
+        shipmentReference:
+          type: string
+          description: 'Shipment reference, a unique id in Swipload'
+          nullable: true
+          example: FERS2794
+        statusId:
+          $ref: '#/components/schemas/FreightStatusCode'
+        shippersReference:
+          type: string
+          description: Literal reference id shown in system and invoice.
+          nullable: true
+          example: MySysRef#405
+      additionalProperties: false
+      description: A freight order for transport
+    FreightPriceUpdateRequest:
+      required:
+        - price
+        - reference
+      type: object
+      properties:
+        reference:
+          minLength: 1
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          example: OXCQ134
+        price:
+          type: number
+          description: Price
+          format: double
+          example: 145.12
+      additionalProperties: false
+      description: Base class for Freight
+    FreightShippersReferenceUpdateRequest:
+      required:
+        - freightId
+        - shippersReference
+      type: object
+      properties:
+        freightId:
+          type: integer
+          description: A unique id in Swipload
+          format: int32
+          example: 8923421
+        shippersReference:
+          minLength: 1
+          type: string
+          description: The Shippers Reference Id
+          example: 1123abcd123
+      additionalProperties: false
+      description: ''
+    FreightStatusCode:
+      enum:
+        - Draft
+        - PendingApproval
+        - Open
+        - InTransit
+        - Delivered
+        - Deleted
+        - PendingDetails
+        - PendingPickup
+        - Cancelled
+        - Ready
+      type: string
+      description: Freight status id enum.
+      x-enumNames:
+        - Draft
+        - PendingApproval
+        - Open
+        - InTransit
+        - Delivered
+        - Deleted
+        - PendingDetails
+        - PendingPickup
+        - Cancelled
+        - Ready
+      x-enum-varnames:
+        name: FreightStatusCode
+        modelAsString: true
+      x-ms-enum:
+        name: FreightStatusCode
+        modelAsString: true
+    FreightStatusUpdateRequest:
+      required:
+        - reference
+        - statusId
+        - timeStamp
+      type: object
+      properties:
+        reference:
+          minLength: 1
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          example: OXCQ134
+        statusId:
+          $ref: '#/components/schemas/ExternalUpdateFreightStatusCode'
+        timeStamp:
+          type: string
+          description: Timestamp of status change
+          format: date-time
+          example: '2024-08-22T13:00Z'
+        signee:
+          type: string
+          description: Name of person signing for pickup/delivery (Optional)
+          nullable: true
+          example: John Doe
+        comment:
+          type: string
+          description: Comment (Optional)
+          nullable: true
+          example: www.trackingurl.com
+      additionalProperties: false
+      description: Base class for Freight
+    FreightStatusUpdateResponse:
+      required:
+        - id
+        - reference
+        - statusId
+      type: object
+      properties:
+        id:
+          type: integer
+          description: A unique id in Swipload
+          format: int32
+          example: 8923421
+        reference:
+          minLength: 1
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          example: DPOS4972
+        statusId:
+          $ref: '#/components/schemas/FreightStatusCode'
+        carriersReference:
+          type: string
+          description: Literal reference id shown in system and invoice.
+          nullable: true
+          example: MySysRef#405
+      additionalProperties: false
+      description: A freight order
+    LogType:
+      enum:
+        - Carrier
+        - CarrierPodComment
+        - Shipper
+        - ShipperAndCarrier
+        - Swipload
+      type: string
+      x-enumNames:
+        - Carrier
+        - CarrierPodComment
+        - Shipper
+        - ShipperAndCarrier
+        - Swipload
+      x-enum-varnames:
+        name: LogType
+        modelAsString: true
+      x-ms-enum:
+        name: LogType
+        modelAsString: true
+    ProblemDetails:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: true
+        title:
+          type: string
+          nullable: true
+        status:
+          type: integer
+          format: int32
+          nullable: true
+        detail:
+          type: string
+          nullable: true
+        instance:
+          type: string
+          nullable: true
+      additionalProperties: { }
+    TimeFlexibility:
+      enum:
+        - Flexible
+        - FixedStart
+        - FixedEnd
+        - Slot
+      type: string
+      x-enumNames:
+        - Flexible
+        - FixedStart
+        - FixedEnd
+        - Slot
+      x-enum-varnames:
+        name: TimeFlexibility
+        modelAsString: true
+      x-ms-enum:
+        name: TimeFlexibility
+        modelAsString: true
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      description: Api-token must appear in the header
+      name: api-token
+      in: header
+security:
+  - ApiKey: [ ]
