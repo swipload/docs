@@ -84,6 +84,7 @@ const config: Config = {
               // optional, instructs plugin to generate sidebar.js
               groupPathsBy: 'tag', // group sidebar items by operation "tag"
               categoryLinkSource: 'tag',
+              sidebarCollapsible: false,
             },
           },
         },
@@ -146,7 +147,7 @@ const config: Config = {
             },
             {
               label: 'API',
-              to: '/docs/api/freights',
+              to: '/docs/api/freights/swipload-integrations-api',
             },
             {
               label: 'Check Status',
