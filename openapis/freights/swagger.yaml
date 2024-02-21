@@ -3,7 +3,7 @@ info:
   title: Swipload.Integrations.Api
   contact:
     name: Swipload Support
-    email: sup@swipload.no
+    email: support@swipload.no
   version: v0
 paths:
   /Freight:
@@ -36,6 +36,52 @@ paths:
           description: External system not defined or Freight with ExternalId already exists
           content:
             application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /Freight/process-csv:
+    post:
+      tags:
+        - Freight
+      summary: Processes a CSV to create or update freight.
+      description: Create or update freights using a wellknown formated csv file
+      operationId: FreightProcessShipperFreightsCSV
+      requestBody:
+        description: The request with file name and The unique identifier. This will be appended to the filename after processing
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProcessCsvRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ProcessCsvRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ProcessCsvRequest'
+      responses:
+        '200':
+          description: Freight list successfully created.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProcessCsvResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProcessCsvResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProcessCsvResponse'
+        '400':
+          description: Csv file with error/not found or External system not defined
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
@@ -286,39 +332,142 @@ components:
           example: OXCQ134
       additionalProperties: false
       description: Base class for Freight
+    FreightLineBaseDto:
+      type: object
+      properties:
+        name:
+          maxLength: 250
+          type: string
+          description: Arbitrary product name.
+          nullable: true
+          example: Block of concrete
+        itemNumber:
+          maxLength: 50
+          type: string
+          description: Arbitrary item number.
+          nullable: true
+          example: B-123
+        description:
+          maxLength: 250
+          type: string
+          description: Description of product
+          nullable: true
+          example: 'Nicely patinated with colorcode #532943'
+        ian:
+          maxLength: 13
+          type: string
+          description: International Article Number (also known as European Article Number or EAN)
+          nullable: true
+          example: '4131618458562'
+        sscc:
+          maxLength: 18
+          type: string
+          description: Serial Shipping Container Codes (SSCCs)
+          nullable: true
+          example: '230874513969584500'
+        location:
+          maxLength: 50
+          type: string
+          description: 'Location if product, i.e. warehouse code'
+          nullable: true
+          example: P3
+        quantity:
+          type: integer
+          description: Quantity
+          format: int32
+          nullable: true
+          example: 1
+        pallets:
+          type: integer
+          description: Pallets
+          format: int32
+          nullable: true
+        weight:
+          type: number
+          description: Weight in kilograms
+          format: double
+          nullable: true
+          example: 1.1111
+        volume:
+          type: number
+          description: Volume in m^3
+          format: double
+          nullable: true
+          example: 1.111111
+        length:
+          type: number
+          description: Lenght in centimeters (cm)
+          format: double
+          nullable: true
+          example: 1.1111
+        width:
+          type: number
+          description: Width in centimeters (cm)
+          format: double
+          nullable: true
+          example: 1.1111
+        height:
+          type: number
+          description: Height in centimeters (cm)
+          format: double
+          nullable: true
+          example: 1.1111
+        loadingMeters:
+          type: number
+          description: Loading meter (LDM)
+          format: double
+          nullable: true
+          example: 1.1111
+      additionalProperties: false
     FreightLocationDto:
       type: object
       properties:
         address:
           type: string
+          description: Address
           nullable: true
+          example: Elgfaret 72
         zipCode:
+          maxLength: 12
           type: string
+          description: Zip
           nullable: true
+          example: '3930'
         city:
           type: string
+          description: City
           nullable: true
+          example: Porsgrunn
         countryCode:
           type: string
+          description: Country code
           nullable: true
+          example: NO
         latitude:
           type: number
+          description: Latitude of location
           format: double
           nullable: true
+          example: 59.915318
         longitude:
           type: number
+          description: Longitude of location
           format: double
           nullable: true
+          example: 10.745938
         contactCompany:
           type: string
+          description: Name of company or location
           nullable: true
         timeFlexibility:
           $ref: '#/components/schemas/TimeFlexibility'
         fromDate:
           type: string
+          description: Earliest point in time
           format: date-time
         toDate:
           type: string
+          description: Latest point in time
           format: date-time
           nullable: true
       additionalProperties: false
@@ -344,19 +493,12 @@ components:
       description: Base class for Freight
     FreightPostRequest:
       required:
-        - allowClosedTrailer
-        - allowOpenTrailer
-        - allowVehicleCarAndTrailer
-        - allowVehicleSemi
-        - allowVehicleVan
         - deliveryLocation
         - externalId
-        - isPrivate
-        - isStackable
-        - jobDescription
         - pickupLocation
         - recipientContactCompany
         - recipientContactPerson
+        - senderContactCompany
         - senderContactPerson
       type: object
       properties:
@@ -393,9 +535,9 @@ components:
           nullable: true
           example: albrektm
         senderContactCompany:
+          minLength: 1
           type: string
           description: Sender company name
-          nullable: true
           example: Our company AS
         senderContactPerson:
           minLength: 1
@@ -478,9 +620,9 @@ components:
           nullable: true
           example: 192
         jobDescription:
-          minLength: 1
           type: string
           description: Description of the order
+          nullable: true
           example: A blue container filled with rocks. Ready at the terminal on given time. Remember to always drive carefully - stay safe!
         dueDate:
           type: string
@@ -515,18 +657,41 @@ components:
           type: boolean
           description: Stackable
           example: false
+          deprecated: true
         allowVehicleSemi:
           type: boolean
+          description: Allow semitrailer
+          example: true
+          deprecated: true
         allowVehicleCarAndTrailer:
           type: boolean
+          description: Allow car and trailer
+          example: true
+          deprecated: true
         allowOpenTrailer:
           type: boolean
+          description: Allow open trailer
+          deprecated: true
         allowClosedTrailer:
           type: boolean
+          description: Allow closed trailer
+          example: true
+          deprecated: true
         allowVehicleVan:
           type: boolean
+          description: Allow van
+          example: true
+          deprecated: true
         isPrivate:
           type: boolean
+          description: Hide freight from Market
+          nullable: true
+          example: false
+        freightLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreightLineBaseDto'
+          nullable: true
       additionalProperties: false
       description: A freight order for transport
     FreightPostResponse:
@@ -697,6 +862,27 @@ components:
           example: MySysRef#405
       additionalProperties: false
       description: A freight order
+    HeidelbergCsvErrorDto:
+      type: object
+      properties:
+        row:
+          type: integer
+          description: Gets or sets the row.
+          format: int32
+        column:
+          type: integer
+          description: Gets or sets the column.
+          format: int32
+        header:
+          type: string
+          description: Gets or sets the header.
+          nullable: true
+        rawValue:
+          type: string
+          description: Gets or sets the raw value.
+          nullable: true
+      additionalProperties: false
+      description: The Swipload.Integrations.Api.Models.Heidelberg.HeidelbergCsvErrorDto class.
     LogType:
       enum:
         - Carrier
@@ -736,7 +922,73 @@ components:
         instance:
           type: string
           nullable: true
-      additionalProperties: { }
+      additionalProperties: {}
+    ProcessCsvRequest:
+      type: object
+      properties:
+        csvFile:
+          type: string
+          nullable: true
+        guid:
+          type: string
+          nullable: true
+        version:
+          type: integer
+          format: int32
+      additionalProperties: false
+    ProcessCsvResponse:
+      type: object
+      properties:
+        csvFileNameProcessed:
+          type: string
+          description: Gets or sets the CSV file name processed.
+          nullable: true
+        csvIsValid:
+          type: boolean
+          description: 'Gets or sets a value indicating whether [CSV is valid].'
+          nullable: true
+        csvErrorList:
+          type: array
+          items:
+            $ref: '#/components/schemas/HeidelbergCsvErrorDto'
+          description: Gets or sets the CSV error list.
+          nullable: true
+        processedCsvShipments:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProcessedCsvShipment'
+          description: Gets or sets the processed CSV shipments.
+          nullable: true
+        createdShipmentsRefList:
+          type: string
+          description: Gets or sets the created shipments reference list.
+          nullable: true
+          readOnly: true
+        updatedShipmentsRefList:
+          type: string
+          description: Gets or sets the updated shipments reference list.
+          nullable: true
+          readOnly: true
+        errors:
+          type: array
+          items:
+            type: string
+          description: Gets or sets the errors.
+          nullable: true
+      additionalProperties: false
+      description: The Swipload.Integrations.Api.Models.Heidelberg.ProcessCsvResponse class.
+    ProcessedCsvShipment:
+      type: object
+      properties:
+        reference:
+          type: string
+          nullable: true
+        shipmentId:
+          type: integer
+          format: int32
+        isUpdate:
+          type: boolean
+      additionalProperties: false
     TimeFlexibility:
       enum:
         - Flexible
@@ -762,4 +1014,4 @@ components:
       name: api-token
       in: header
 security:
-  - ApiKey: [ ]
+  - ApiKey: []
