@@ -18,6 +18,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/freights/freight-process-shipper-freights-csv",
+          label: "Processes a CSV to create or update freight.",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
           id: "api/freights/freight-patch-update-status",
           label: "Update freight status using patch",
           className: "api-method patch",
