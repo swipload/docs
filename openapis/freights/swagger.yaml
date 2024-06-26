@@ -40,6 +40,34 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+    patch:
+      tags:
+        - Freight
+      operationId: FreightUpdateFreight
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightPostRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightPostRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightPostRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightPostResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /Freight/process-csv:
     post:
       tags:
@@ -289,11 +317,263 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+  /Shipment:
+    post:
+      tags:
+        - Shipment
+      summary: Create a Shipment
+      description: Create a shipment using your unique id as `ExternalShipmentId`.
+      operationId: ShipmentCreate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddShipmentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/AddShipmentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/AddShipmentRequest'
+        required: true
+      responses:
+        '200':
+          description: Shipment successfully created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddShipmentResponse'
+        '400':
+          description: External system not defined or Shipment with ExternalId already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
 components:
   schemas:
     ActionResult:
       type: object
       additionalProperties: false
+    AddFreightRequest:
+      required:
+        - deliveryLocation
+        - externalFreightId
+        - pickupLocation
+        - recipientContactCompany
+        - recipientContactPerson
+        - senderContactCompany
+        - senderContactPerson
+      type: object
+      properties:
+        statusId:
+          $ref: '#/components/schemas/FreightStatusCode'
+        externalFreightId:
+          minLength: 1
+          type: string
+          description: Unique freight id in source system
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        shippersReference:
+          type: string
+          description: Gets or sets the shippers internal freight order reference.
+          nullable: true
+          example: OurInternalFreightOrderReference
+        consignorsReference:
+          type: string
+          description: Consignors eference on Freight.
+          nullable: true
+          example: G1444-45
+        consigneesReference:
+          type: string
+          description: Consignees eference on Freight.
+          nullable: true
+          example: G1444-45
+        senderContactCompany:
+          minLength: 1
+          type: string
+          description: Sender company name
+          example: Our company AS
+        senderContactPerson:
+          minLength: 1
+          type: string
+          description: Sender contact person name
+          example: John Doe
+        senderContactCellphone:
+          type: string
+          description: 'Sender contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          nullable: true
+          example: '+4740484410'
+        recipientContactCompany:
+          minLength: 1
+          type: string
+          description: Receiving company name
+          example: Cargo Receiver AS
+        recipientContactPerson:
+          minLength: 1
+          type: string
+          description: Receiving contact person name
+          example: Jane Doe
+        recipientContactCellphone:
+          type: string
+          description: 'Receiving contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          nullable: true
+          example: '+4740484410'
+        pickupLocation:
+          $ref: '#/components/schemas/FreightLocationDto'
+        deliveryLocation:
+          $ref: '#/components/schemas/FreightLocationDto'
+        pickupComment:
+          type: string
+          description: Additional pickup details
+          nullable: true
+          example: Please contact sender when it comes to the departure day.
+        deliveryComment:
+          type: string
+          description: Additional delivery details
+          nullable: true
+          example: Contact warehouse manager for instructions where to unload the goods.
+        sumQty:
+          type: integer
+          description: Total quantity
+          format: int32
+          nullable: true
+          example: 1
+        sumWeight:
+          type: number
+          description: Total weight in kilograms
+          format: double
+          nullable: true
+          example: 1200
+        sumVolume:
+          type: number
+          description: Total volume in m^3
+          format: double
+          nullable: true
+          example: 12
+        length:
+          type: integer
+          description: Length in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 230
+        width:
+          type: integer
+          description: Width in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 60
+        height:
+          type: integer
+          description: Height in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 192
+        jobDescription:
+          type: string
+          description: Description of the order
+          nullable: true
+          example: A blue container filled with rocks. Ready at the terminal on given time. Remember to always drive carefully - stay safe!
+        sumPallets:
+          type: number
+          description: Total pallets
+          format: double
+          nullable: true
+          example: 3
+        sumLoadingMeters:
+          type: number
+          description: Total loading meters
+          format: double
+          nullable: true
+          example: 9
+        sumChargeableWeight:
+          type: number
+          description: Total chargeable weight in kilograms
+          format: double
+          nullable: true
+          example: 1200
+        freightLines:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreightLineBaseDto'
+          description: Gets or sets the freight lines.
+          nullable: true
+        featureList:
+          type: array
+          items:
+            type: string
+          description: Gets or sets the feature list.
+          nullable: true
+      additionalProperties: false
+      description: A freight order for transport
+    AddFreightResponse:
+      type: object
+      properties:
+        externalId:
+          type: string
+          description: Unique freight id in source system
+          nullable: true
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        reference:
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          nullable: true
+          example: DPOS4972
+        status:
+          $ref: '#/components/schemas/FreightStatusCode'
+      additionalProperties: false
+      description: A freight order for transport
+    AddShipmentRequest:
+      required:
+        - externalShipmentId
+        - freights
+      type: object
+      properties:
+        externalShipmentId:
+          minLength: 1
+          type: string
+          description: Gets or sets the external shipment identifier.
+        assignee:
+          type: string
+          description: User identifier for owner / assignee of freight in Swipload
+          nullable: true
+          example: albrektm
+        shippersReference:
+          type: string
+          description: Gets or sets the shippers internal shipment reference.
+          nullable: true
+          example: OurInternalShipmentReference
+        projectName:
+          type: string
+          description: Gets or sets the name of the project.
+          nullable: true
+        freights:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddFreightRequest'
+          description: Gets or sets the freights.
+      additionalProperties: false
+      description: The Swipload.Integrations.Api.Models.Requests.AddShipmentRequest class.
+    AddShipmentResponse:
+      type: object
+      properties:
+        shipmentReference:
+          type: string
+          description: 'Shipment reference, a unique id in Swipload'
+          nullable: true
+          example: FERS2794
+        externalShipmentId:
+          type: string
+          description: Gets or sets the external shipment identifier.
+          nullable: true
+        freightResponses:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddFreightResponse'
+          description: Gets or sets the freight post responses.
+          nullable: true
+      additionalProperties: false
+      description: A shipment order for transport
     ExternalUpdateFreightStatusCode:
       enum:
         - InTransit
@@ -372,11 +652,11 @@ components:
           nullable: true
           example: P3
         quantity:
-          type: integer
+          type: number
           description: Quantity
-          format: int32
+          format: double
           nullable: true
-          example: 1
+          example: 2
         pallets:
           type: integer
           description: Pallets
@@ -785,7 +1065,6 @@ components:
         - PendingDetails
         - PendingPickup
         - Cancelled
-        - Ready
       type: string
       description: Freight status id enum.
       x-enumNames:
@@ -798,7 +1077,6 @@ components:
         - PendingDetails
         - PendingPickup
         - Cancelled
-        - Ready
       x-enum-varnames:
         name: FreightStatusCode
         modelAsString: true
