@@ -8,7 +8,25 @@ const sidebar: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Consignment",
+      link: {
+        type: "doc",
+        id: "api/freights/consignment",
+      },
+      collapsible: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/freights/consignment-get",
+          label: "ConsignmentGet",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Freight",
+      collapsible: false,
       items: [
         {
           type: "doc",
@@ -18,27 +36,15 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "api/freights/freight-process-shipper-freights-csv",
-          label: "Processes a CSV to create or update freight.",
-          className: "api-method post",
+          id: "api/freights/freight-update-freight",
+          label: "FreightUpdateFreight",
+          className: "api-method patch",
         },
         {
           type: "doc",
           id: "api/freights/freight-patch-update-status",
           label: "Update freight status using patch",
           className: "api-method patch",
-        },
-        {
-          type: "doc",
-          id: "api/freights/freight-put-update-status",
-          label: "Update freight status using put",
-          className: "api-method put",
-        },
-        {
-          type: "doc",
-          id: "api/freights/freight-put-freight-log",
-          label: "Update freight log when FTP action succeeds in logic app",
-          className: "api-method put",
         },
         {
           type: "doc",
@@ -52,11 +58,18 @@ const sidebar: SidebarsConfig = {
           label: "Update Shippers Reference",
           className: "api-method patch",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Shipment",
+      collapsible: false,
+      items: [
         {
           type: "doc",
-          id: "api/freights/freight-update-price",
-          label: "Update the price on a Freight. Only works for Freights that are not part of a Shipment.",
-          className: "api-method patch",
+          id: "api/freights/shipment-create",
+          label: "Create a Shipment",
+          className: "api-method post",
         },
       ],
     },

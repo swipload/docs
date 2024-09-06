@@ -6,7 +6,32 @@ info:
     email: support@swipload.no
   version: v0
 paths:
-  /Freight:
+  /consignment:
+    get:
+      tags:
+        - Consignment
+      operationId: ConsignmentGet
+      parameters:
+        - name: swipref
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Consignment'
+        '400':
+          description: External system not defined or Shipment with ExternalId already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+  /freight:
     post:
       tags:
         - Freight
@@ -57,7 +82,7 @@ paths:
               $ref: '#/components/schemas/FreightPostRequest'
       responses:
         '200':
-          description: Success
+          description: OK
           content:
             application/json:
               schema:
@@ -68,53 +93,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProblemDetails'
-  /Freight/process-csv:
-    post:
-      tags:
-        - Freight
-      summary: Processes a CSV to create or update freight.
-      description: Create or update freights using a wellknown formated csv file
-      operationId: FreightProcessShipperFreightsCSV
-      requestBody:
-        description: The request with file name and The unique identifier. This will be appended to the filename after processing
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/ProcessCsvRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ProcessCsvRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/ProcessCsvRequest'
-      responses:
-        '200':
-          description: Freight list successfully created.
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProcessCsvResponse'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProcessCsvResponse'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ProcessCsvResponse'
-        '400':
-          description: Csv file with error/not found or External system not defined
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Api-token missing or Unauthorized client
-  /Freight/status:
+  /freight/status:
     patch:
       tags:
         - Freight
@@ -148,74 +127,7 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
-    put:
-      tags:
-        - Freight
-      summary: Update freight status using put
-      description: Update freight status using Swipref. Called from Carrier's TMS.
-      operationId: FreightPutUpdateStatus
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FreightStatusUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/FreightStatusUpdateRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/FreightStatusUpdateRequest'
-        required: true
-      responses:
-        '200':
-          description: Freight status successfully updated.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/FreightStatusUpdateResponse'
-        '400':
-          description: 'Freight not found, invalid status supplied, or external system not defined.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Api-token missing or Unauthorized client
-  /Freight/freightlog:
-    put:
-      tags:
-        - Freight
-      summary: Update freight log when FTP action succeeds in logic app
-      description: Update freight log. Called from Azure Logic App.
-      operationId: FreightPutFreightLog
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FreightLogUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/FreightLogUpdateRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/FreightLogUpdateRequest'
-        required: true
-      responses:
-        '200':
-          description: Freight log successfully updated.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActionResult'
-        '400':
-          description: 'Freight not found, invalid data supplied, or external system not defined.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Api-token missing or Unauthorized client
-  /Freight/carriersreference:
+  /freight/carriersreference:
     patch:
       tags:
         - Freight
@@ -249,7 +161,7 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
-  /Freight/shippersreference:
+  /freight/shippersreference:
     patch:
       tags:
         - Freight
@@ -283,41 +195,7 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
-  /Freight/updateprice:
-    patch:
-      tags:
-        - Freight
-      summary: Update the price on a Freight. Only works for Freights that are not part of a Shipment.
-      description: Update price. Called from Azure Logic App.
-      operationId: FreightUpdatePrice
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/FreightPriceUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/FreightPriceUpdateRequest'
-          application/*+json:
-            schema:
-              $ref: '#/components/schemas/FreightPriceUpdateRequest'
-        required: true
-      responses:
-        '200':
-          description: Price successfully updated.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ActionResult'
-        '400':
-          description: 'Freight not found, freight already has price, invalid data supplied, or external system not defined.'
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Api-token missing or Unauthorized client
-  /Shipment:
+  /shipment:
     post:
       tags:
         - Shipment
@@ -401,7 +279,7 @@ components:
           example: John Doe
         senderContactCellphone:
           type: string
-          description: 'Sender contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          description: 'Sender contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
           nullable: true
           example: '+4740484410'
         recipientContactCompany:
@@ -416,7 +294,7 @@ components:
           example: Jane Doe
         recipientContactCellphone:
           type: string
-          description: 'Receiving contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          description: 'Receiving contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
           nullable: true
           example: '+4740484410'
         pickupLocation:
@@ -498,12 +376,6 @@ components:
             $ref: '#/components/schemas/FreightLineBaseDto'
           description: Gets or sets the freight lines.
           nullable: true
-        featureList:
-          type: array
-          items:
-            type: string
-          description: Gets or sets the feature list.
-          nullable: true
       additionalProperties: false
       description: A freight order for transport
     AddFreightResponse:
@@ -574,6 +446,123 @@ components:
           nullable: true
       additionalProperties: false
       description: A shipment order for transport
+    Consignment:
+      required:
+        - externalId
+        - recipientContactPerson
+        - senderContactPerson
+        - shipFrom
+        - shipTo
+      type: object
+      properties:
+        externalId:
+          minLength: 1
+          type: string
+          description: Unique freight id in source system
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        externalShipmentId:
+          type: string
+          description: Unique shipment id in source system
+          nullable: true
+          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        consigneesReference:
+          type: string
+          description: Consignees reference on Freight.
+          nullable: true
+          example: '6427316'
+        consignorsReference:
+          type: string
+          description: Consignors eference on Freight.
+          nullable: true
+          example: G1444-45
+        shipFrom:
+          $ref: '#/components/schemas/FreightLocationDto'
+        shipTo:
+          $ref: '#/components/schemas/FreightLocationDto'
+        senderContactPerson:
+          minLength: 1
+          type: string
+          description: Sender contact person name
+          example: John Doe
+        senderContactCellphone:
+          type: string
+          description: 'Sender contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
+          nullable: true
+          example: '+4740484410'
+        recipientContactPerson:
+          minLength: 1
+          type: string
+          description: Receiving contact person name
+          example: Jane Doe
+        recipientContactCellphone:
+          type: string
+          description: 'Receiving contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
+          nullable: true
+          example: '+4740484410'
+        remarks:
+          $ref: '#/components/schemas/Remarks'
+        sumQty:
+          type: integer
+          description: Total quantity
+          format: int32
+          nullable: true
+          example: 1
+        sumWeight:
+          type: number
+          description: Total weight in kilograms
+          format: double
+          nullable: true
+          example: 1200
+        sumVolume:
+          type: number
+          description: Total volume in m^3
+          format: double
+          nullable: true
+          example: 12
+        length:
+          type: integer
+          description: Length in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 230
+        width:
+          type: integer
+          description: Width in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 60
+        height:
+          type: integer
+          description: Height in centimeters (cm)
+          format: int32
+          nullable: true
+          example: 192
+        sumPallets:
+          type: number
+          description: Total pallets
+          format: double
+          nullable: true
+          example: 3
+        sumLoadingMeters:
+          type: number
+          description: Total loading meters
+          format: double
+          nullable: true
+          example: 9
+        sumChargeableWeight:
+          type: number
+          description: Total chargeable weight in kilograms
+          format: double
+          nullable: true
+          example: 1200
+        lines:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreightLineBaseDto'
+          description: Freight lines (varelinjer)
+          nullable: true
+      additionalProperties: false
+      description: Separately identifiable number of goods items to be transported from one consignor to one consignee via one or more modes of transport and specified in one single transport document
     ExternalUpdateFreightStatusCode:
       enum:
         - InTransit
@@ -751,26 +740,6 @@ components:
           format: date-time
           nullable: true
       additionalProperties: false
-    FreightLogUpdateRequest:
-      required:
-        - freightId
-        - logType
-      type: object
-      properties:
-        freightId:
-          type: integer
-          description: A unique id in Swipload
-          format: int32
-          example: 8923421
-        logType:
-          $ref: '#/components/schemas/LogType'
-        logText:
-          type: string
-          description: 'The LogText, a text that is added to the Freights log'
-          nullable: true
-          example: This is some important text
-      additionalProperties: false
-      description: Base class for Freight
     FreightPostRequest:
       required:
         - deliveryLocation
@@ -826,7 +795,7 @@ components:
           example: John Doe
         senderContactCellphone:
           type: string
-          description: 'Sender contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          description: 'Sender contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
           nullable: true
           example: '+4740484410'
         recipientContactCompany:
@@ -841,7 +810,7 @@ components:
           example: Jane Doe
         recipientContactCellphone:
           type: string
-          description: 'Receiving contact person phone, in <see href="https://en.wikipedia.org/wiki/E.164">E.164</see> format.'
+          description: 'Receiving contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
           nullable: true
           example: '+4740484410'
         pickupLocation:
@@ -904,12 +873,6 @@ components:
           description: Description of the order
           nullable: true
           example: A blue container filled with rocks. Ready at the terminal on given time. Remember to always drive carefully - stay safe!
-        dueDate:
-          type: string
-          description: Expiration date
-          format: date-time
-          nullable: true
-          example: '2024-08-22T13:00Z'
         price:
           type: number
           description: Price in NOK
@@ -971,6 +934,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FreightLineBaseDto'
+          description: Freight lines (varelinjer)
           nullable: true
       additionalProperties: false
       description: A freight order for transport
@@ -1018,24 +982,6 @@ components:
           example: MySysRef#405
       additionalProperties: false
       description: A freight order for transport
-    FreightPriceUpdateRequest:
-      required:
-        - price
-        - reference
-      type: object
-      properties:
-        reference:
-          minLength: 1
-          type: string
-          description: 'The Swipref, a unique id in Swipload'
-          example: OXCQ134
-        price:
-          type: number
-          description: Price
-          format: double
-          example: 145.12
-      additionalProperties: false
-      description: Base class for Freight
     FreightShippersReferenceUpdateRequest:
       required:
         - freightId
@@ -1140,47 +1086,6 @@ components:
           example: MySysRef#405
       additionalProperties: false
       description: A freight order
-    HeidelbergCsvErrorDto:
-      type: object
-      properties:
-        row:
-          type: integer
-          description: Gets or sets the row.
-          format: int32
-        column:
-          type: integer
-          description: Gets or sets the column.
-          format: int32
-        header:
-          type: string
-          description: Gets or sets the header.
-          nullable: true
-        rawValue:
-          type: string
-          description: Gets or sets the raw value.
-          nullable: true
-      additionalProperties: false
-      description: The Swipload.Integrations.Api.Models.Heidelberg.HeidelbergCsvErrorDto class.
-    LogType:
-      enum:
-        - Carrier
-        - CarrierPodComment
-        - Shipper
-        - ShipperAndCarrier
-        - Swipload
-      type: string
-      x-enumNames:
-        - Carrier
-        - CarrierPodComment
-        - Shipper
-        - ShipperAndCarrier
-        - Swipload
-      x-enum-varnames:
-        name: LogType
-        modelAsString: true
-      x-ms-enum:
-        name: LogType
-        modelAsString: true
     ProblemDetails:
       type: object
       properties:
@@ -1201,72 +1106,26 @@ components:
           type: string
           nullable: true
       additionalProperties: {}
-    ProcessCsvRequest:
+    Remarks:
       type: object
       properties:
-        csvFile:
+        transport:
           type: string
+          description: Additional description of the trasnsport
           nullable: true
-        guid:
+          example: 'A blue container filled with rocks. Ready at the terminal on given time. Drive carefully, stay safe!'
+        pickup:
           type: string
+          description: Additional pickup details
           nullable: true
-        version:
-          type: integer
-          format: int32
+          example: Please contact sender when it comes to the departure day.
+        delivery:
+          type: string
+          description: Additional delivery details
+          nullable: true
+          example: Contact warehouse manager for instructions where to unload the goods.
       additionalProperties: false
-    ProcessCsvResponse:
-      type: object
-      properties:
-        csvFileNameProcessed:
-          type: string
-          description: Gets or sets the CSV file name processed.
-          nullable: true
-        csvIsValid:
-          type: boolean
-          description: 'Gets or sets a value indicating whether [CSV is valid].'
-          nullable: true
-        csvErrorList:
-          type: array
-          items:
-            $ref: '#/components/schemas/HeidelbergCsvErrorDto'
-          description: Gets or sets the CSV error list.
-          nullable: true
-        processedCsvShipments:
-          type: array
-          items:
-            $ref: '#/components/schemas/ProcessedCsvShipment'
-          description: Gets or sets the processed CSV shipments.
-          nullable: true
-        createdShipmentsRefList:
-          type: string
-          description: Gets or sets the created shipments reference list.
-          nullable: true
-          readOnly: true
-        updatedShipmentsRefList:
-          type: string
-          description: Gets or sets the updated shipments reference list.
-          nullable: true
-          readOnly: true
-        errors:
-          type: array
-          items:
-            type: string
-          description: Gets or sets the errors.
-          nullable: true
-      additionalProperties: false
-      description: The Swipload.Integrations.Api.Models.Heidelberg.ProcessCsvResponse class.
-    ProcessedCsvShipment:
-      type: object
-      properties:
-        reference:
-          type: string
-          nullable: true
-        shipmentId:
-          type: integer
-          format: int32
-        isUpdate:
-          type: boolean
-      additionalProperties: false
+      description: Separately identifiable number of goods items to be transported from one consignor to one consignee via one or more modes of transport and specified in one single transport document
     TimeFlexibility:
       enum:
         - Flexible
@@ -1293,3 +1152,6 @@ components:
       in: header
 security:
   - ApiKey: []
+tags:
+  - name: Consignment
+    description: Consignment description
