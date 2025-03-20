@@ -6,31 +6,6 @@ info:
     email: support@swipload.no
   version: v0
 paths:
-  /consignment:
-    get:
-      tags:
-        - Consignment
-      operationId: ConsignmentGet
-      parameters:
-        - name: swipref
-          in: query
-          schema:
-            type: string
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Consignment'
-        '400':
-          description: External system not defined or Shipment with ExternalId already exists
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-        '401':
-          description: Api-token missing or Unauthorized client
   /freight:
     post:
       tags:
@@ -195,6 +170,34 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+  /requirement:
+    get:
+      tags:
+        - Requirement
+      summary: Get the available freight requirements list
+      description: List of all the available requirements that can be added to a freight
+      operationId: RequirementGetList
+      parameters:
+        - name: lang
+          in: query
+          description: 'Optional parameter to set the return language for Description. Options: `en-US`(default) or `NB-no`.'
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of available requirements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Requirement'
+        '401':
+          description: Api-token missing or Unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /shipment:
     post:
       tags:
@@ -240,9 +243,7 @@ components:
         - externalFreightId
         - pickupLocation
         - recipientContactCompany
-        - recipientContactPerson
         - senderContactCompany
-        - senderContactPerson
       type: object
       properties:
         statusId:
@@ -273,9 +274,9 @@ components:
           description: Sender company name
           example: Our company AS
         senderContactPerson:
-          minLength: 1
           type: string
           description: Sender contact person name
+          nullable: true
           example: John Doe
         senderContactCellphone:
           type: string
@@ -288,9 +289,9 @@ components:
           description: Receiving company name
           example: Cargo Receiver AS
         recipientContactPerson:
-          minLength: 1
           type: string
           description: Receiving contact person name
+          nullable: true
           example: Jane Doe
         recipientContactCellphone:
           type: string
@@ -446,123 +447,6 @@ components:
           nullable: true
       additionalProperties: false
       description: A shipment order for transport
-    Consignment:
-      required:
-        - externalId
-        - recipientContactPerson
-        - senderContactPerson
-        - shipFrom
-        - shipTo
-      type: object
-      properties:
-        externalId:
-          minLength: 1
-          type: string
-          description: Unique freight id in source system
-          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
-        externalShipmentId:
-          type: string
-          description: Unique shipment id in source system
-          nullable: true
-          example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
-        consigneesReference:
-          type: string
-          description: Consignees reference on Freight.
-          nullable: true
-          example: '6427316'
-        consignorsReference:
-          type: string
-          description: Consignors eference on Freight.
-          nullable: true
-          example: G1444-45
-        shipFrom:
-          $ref: '#/components/schemas/FreightLocationDto'
-        shipTo:
-          $ref: '#/components/schemas/FreightLocationDto'
-        senderContactPerson:
-          minLength: 1
-          type: string
-          description: Sender contact person name
-          example: John Doe
-        senderContactCellphone:
-          type: string
-          description: 'Sender contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
-          nullable: true
-          example: '+4740484410'
-        recipientContactPerson:
-          minLength: 1
-          type: string
-          description: Receiving contact person name
-          example: Jane Doe
-        recipientContactCellphone:
-          type: string
-          description: 'Receiving contact person phone, in [E.164](https://en.wikipedia.org/wiki/E.164) format.'
-          nullable: true
-          example: '+4740484410'
-        remarks:
-          $ref: '#/components/schemas/Remarks'
-        sumQty:
-          type: integer
-          description: Total quantity
-          format: int32
-          nullable: true
-          example: 1
-        sumWeight:
-          type: number
-          description: Total weight in kilograms
-          format: double
-          nullable: true
-          example: 1200
-        sumVolume:
-          type: number
-          description: Total volume in m^3
-          format: double
-          nullable: true
-          example: 12
-        length:
-          type: integer
-          description: Length in centimeters (cm)
-          format: int32
-          nullable: true
-          example: 230
-        width:
-          type: integer
-          description: Width in centimeters (cm)
-          format: int32
-          nullable: true
-          example: 60
-        height:
-          type: integer
-          description: Height in centimeters (cm)
-          format: int32
-          nullable: true
-          example: 192
-        sumPallets:
-          type: number
-          description: Total pallets
-          format: double
-          nullable: true
-          example: 3
-        sumLoadingMeters:
-          type: number
-          description: Total loading meters
-          format: double
-          nullable: true
-          example: 9
-        sumChargeableWeight:
-          type: number
-          description: Total chargeable weight in kilograms
-          format: double
-          nullable: true
-          example: 1200
-        lines:
-          type: array
-          items:
-            $ref: '#/components/schemas/FreightLineBaseDto'
-          description: Freight lines (varelinjer)
-          nullable: true
-      additionalProperties: false
-      description: Separately identifiable number of goods items to be transported from one consignor to one consignee via one or more modes of transport and specified in one single transport document
     ExternalUpdateFreightStatusCode:
       enum:
         - InTransit
@@ -746,9 +630,7 @@ components:
         - externalId
         - pickupLocation
         - recipientContactCompany
-        - recipientContactPerson
         - senderContactCompany
-        - senderContactPerson
       type: object
       properties:
         externalId:
@@ -789,9 +671,9 @@ components:
           description: Sender company name
           example: Our company AS
         senderContactPerson:
-          minLength: 1
           type: string
           description: Sender contact person name
+          nullable: true
           example: John Doe
         senderContactCellphone:
           type: string
@@ -804,9 +686,9 @@ components:
           description: Receiving company name
           example: Cargo Receiver AS
         recipientContactPerson:
-          minLength: 1
           type: string
           description: Receiving contact person name
+          nullable: true
           example: Jane Doe
         recipientContactCellphone:
           type: string
@@ -930,6 +812,14 @@ components:
           description: Hide freight from Market
           nullable: true
           example: false
+        projectNumber:
+          type: string
+          description: Gets or sets the project number.
+          nullable: true
+        projectName:
+          type: string
+          description: Gets or sets the name of the project.
+          nullable: true
         freightLines:
           type: array
           items:
@@ -1105,27 +995,22 @@ components:
         instance:
           type: string
           nullable: true
-      additionalProperties: {}
-    Remarks:
+      additionalProperties: { }
+    Requirement:
+      required:
+        - key
       type: object
       properties:
-        transport:
+        key:
           type: string
-          description: Additional description of the trasnsport
+          description: Gets the unique requirement key.
           nullable: true
-          example: 'A blue container filled with rocks. Ready at the terminal on given time. Drive carefully, stay safe!'
-        pickup:
+        description:
           type: string
-          description: Additional pickup details
+          description: Gets the requirement description.
           nullable: true
-          example: Please contact sender when it comes to the departure day.
-        delivery:
-          type: string
-          description: Additional delivery details
-          nullable: true
-          example: Contact warehouse manager for instructions where to unload the goods.
       additionalProperties: false
-      description: Separately identifiable number of goods items to be transported from one consignor to one consignee via one or more modes of transport and specified in one single transport document
+      description: A freight requirement
     TimeFlexibility:
       enum:
         - Flexible
@@ -1151,7 +1036,4 @@ components:
       name: api-token
       in: header
 security:
-  - ApiKey: []
-tags:
-  - name: Consignment
-    description: Consignment description
+  - ApiKey: [ ]

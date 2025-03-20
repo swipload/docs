@@ -76,15 +76,14 @@ const config: Config = {
         id: 'api', // plugin id
         docsPluginId: 'classic', // id of plugin-content-docs or preset for rendering docs
         config: {
-          freights: {
+          integrationApi: {
             // the <id> referenced when running CLI commands
-            specPath: 'openapis/freights/swagger.yaml', // path to OpenAPI spec, URLs supported
-            outputDir: 'docs/api/freights', // output directory for generated files
-            sidebarOptions: {
+            specPath: 'openapis/integrations/swagger.yaml', // path to OpenAPI spec, URLs supported
+            outputDir: 'docs/api', // output directory for generated files
+            sidebarOptions: {              
               // optional, instructs plugin to generate sidebar.js
               groupPathsBy: 'tag', // group sidebar items by operation "tag"
               categoryLinkSource: 'tag',
-              sidebarCollapsible: false,
             },
           },
         },
@@ -110,12 +109,12 @@ const config: Config = {
         {
           type: 'dropdown',
           label: 'API',
-          position: 'left',
+          position: 'left',          
           items: [
             {
-              label: 'Freights',
+              label: 'Integrations',
               type: 'docSidebar',
-              sidebarId: 'tutorialSidebar',
+              sidebarId: 'integrationApiSidebar',
             },
           ],
         },
@@ -147,7 +146,7 @@ const config: Config = {
             },
             {
               label: 'API',
-              to: '/docs/api/freights/swipload-integrations-api',
+              to: '/docs/api/swipload-integrations-api',
             },
             {
               label: 'Check Status',
