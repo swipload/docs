@@ -1,0 +1,71 @@
+---
+id: freight-patch-update-status
+title: "Update freight status using patch"
+description: "Update freight status using Swipref. Called from Carrier's TMS."
+sidebar_label: "Update freight status using patch"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWE1z2zYQ/SuY7aFflCzL7jThqYqcTN0mtRo5M516dIDIpYgYBGAAlKxq+N87S4gS5Q/Zbjo5yRdT5GJ3se/tI7gr8HzmIL6CdxbFLPcwiSBFl1hhvNAKYvhkUu6RZeE5c5770rHSCTVj44UwFrMuG3IpMWWZ1QUbcmsF2m8du/ww7kIE2qDl5O08hbgJNOI+yYPvce0SIrB4U6Lzb3S6hHgFiVYeladLbowUSe3k6LOjvFbgkhwLTle0TlhMaR8WM7SoEoQIQq7nKUTgRUFxCkMb9EuDEIOefsbEQwTGUopeoAveGg/xCgqh3qOa+Rzi481C561QM7hbqcscm4pEjLNSiZsSmUiZUPV9qTmlgre8MJL8XPw1/PP45BSqVqrxClCVBW3lXF1arpygFM9QijnSHidPpfFWlQXLtGXvdiBDx3zOPUu4YlNkZV36lE2XDG89WsUlc0vnsXCE2W2HsviDF+j2phLsOnNuVbBdAV1QGmuvAeN1LgHqoU4JnkKnKAduHLYRe1tiRR4L1wkl+GJfXnj5nPVVmyDx6imcRYGOTJnOmn5Icq5mlEimbcE9xECROuR1B/J+r3/a6b3q9PuXxydxr/d3Db6YKcSnAxMcFNOgdVoxWkZdSFgbkVyX5igN2CzZdxf1Ii6/hwhUKSWfUnyqSzud33Su2JmuK5Dooli32/40hsHwuTEWi0XXW55cCzUrrewmuoCqioCnqQjrR63+y7h0eDfiG+6QJZI71yY2bAHegTSg/DGISR3K460/6MZBNw66cdCNl+hG+9jxw48HATkIyEFADgLybAGpopZCrJlh0RmtXGBsv9ejf7sxd7uHuTJJ0LmslHLZNA81yn/6OhJp/Zn1gFI9qU4ibQEklMcZ2nsIDR4Vnw09hfIn/TY1X73un5z2j6voKwrg2ehifPr65/5jCnhmeUYlGKFKhZoNjLF6ziVEcGFQQfSILtXX6Our9dIz9FxIt70xqhsGIhhylSB9Nj+trHcoIVJGiT4gl18978dl+MuE9+VS+6C4JmEW4T62mbW/1u+FR8sl25CRyu1yvVDEpvCmYlwRt+ZaJNjdq0EfluMlRf/mtPfTS8VnsBm6aJvWzbZXdYKukOxUEZzuUxalPct0qdKINsElbbARG5ISTCOm7d3Xc70sxUyoFwrQfl0JT++jslvTLdDPsAybeVCu7snQvcVpTfxnxRHKef4Iqe4YP4r8qkXhkdVTiUXTeg2Sx/eRHBjR8foaFSuEq0dx2rJPipc+11b8gylLpCBwyEOBPtc0ejM0cyMAOKkqHK3pdeSaAZzDpLTCLyG+WlGM35EuJ9Vk+2hMsAbkGoPN5nm4cY/H22RL5xk3BrmlZvI5shx54Pa68XljDFRfiGFtQBshan3czgjfNl22c3TeHG7byr6je60T1wPHou2paHtIaZ1RHj5VUK6ZrkuxxrJ57XTPiXth/um6AyPWncMT35K7xpqNS2O0pSyxqGkILtz5xTUOlaZ4c7QulHfeo99GO19w1fK5b3DbMGEHqNbE9X+Y+q45UY9ejORCUZalrTsrEPAKss15ak3BSQS5dp6erVZT7vCTlVVFt29KtDUZI5hzK0JrXU2qqCEIUfaa6AjDsIvOJWVA5rIMzLojUlXUrBgkCRq/13bS6qPR4HL4K0QwXQ+q6cUEMVi+oNMVX0AM9di7xrymJ91bgeRqVvIZ2Qan9Pcvy1Qt0Q==
+sidebar_class_name: "patch api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update freight status using patch"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/freight/status"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update freight status using Swipref. Called from Carrier's TMS.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"required":["reference","statusId","timeStamp"],"type":"object","properties":{"reference":{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"},"statusId":{"enum":["InTransit","Delivered"],"type":"string","description":"Enum for Freight statuses that can be updated by external systems.","x-enumNames":["InTransit","Delivered"],"x-enum-varnames":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"title":"ExternalUpdateFreightStatusCode"},"timeStamp":{"type":"string","description":"Timestamp of status change","format":"date-time","example":"2024-08-22T13:00Z"},"signee":{"type":"string","description":"Name of person signing for pickup/delivery (Optional)","nullable":true,"example":"John Doe"},"comment":{"type":"string","description":"Comment (Optional)","nullable":true,"example":"www.trackingurl.com"}},"additionalProperties":false,"description":"Base class for Freight","title":"FreightStatusUpdateRequest"}},"text/json":{"schema":{"required":["reference","statusId","timeStamp"],"type":"object","properties":{"reference":{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"},"statusId":{"enum":["InTransit","Delivered"],"type":"string","description":"Enum for Freight statuses that can be updated by external systems.","x-enumNames":["InTransit","Delivered"],"x-enum-varnames":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"title":"ExternalUpdateFreightStatusCode"},"timeStamp":{"type":"string","description":"Timestamp of status change","format":"date-time","example":"2024-08-22T13:00Z"},"signee":{"type":"string","description":"Name of person signing for pickup/delivery (Optional)","nullable":true,"example":"John Doe"},"comment":{"type":"string","description":"Comment (Optional)","nullable":true,"example":"www.trackingurl.com"}},"additionalProperties":false,"description":"Base class for Freight","title":"FreightStatusUpdateRequest"}},"application/*+json":{"schema":{"required":["reference","statusId","timeStamp"],"type":"object","properties":{"reference":{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"OXCQ134"},"statusId":{"enum":["InTransit","Delivered"],"type":"string","description":"Enum for Freight statuses that can be updated by external systems.","x-enumNames":["InTransit","Delivered"],"x-enum-varnames":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"ExternalUpdateFreightStatusCode","modelAsString":true},"title":"ExternalUpdateFreightStatusCode"},"timeStamp":{"type":"string","description":"Timestamp of status change","format":"date-time","example":"2024-08-22T13:00Z"},"signee":{"type":"string","description":"Name of person signing for pickup/delivery (Optional)","nullable":true,"example":"John Doe"},"comment":{"type":"string","description":"Comment (Optional)","nullable":true,"example":"www.trackingurl.com"}},"additionalProperties":false,"description":"Base class for Freight","title":"FreightStatusUpdateRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"Freight status successfully updated.","content":{"application/json":{"schema":{"required":["id","reference","statusId"],"type":"object","properties":{"id":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"reference":{"minLength":1,"type":"string","description":"The Swipref, a unique id in Swipload","example":"DPOS4972"},"statusId":{"enum":["Draft","PendingApproval","Open","InTransit","Delivered","Deleted","PendingDetails","PendingPickup","Cancelled"],"type":"string","description":"Freight status id enum.","x-enumNames":["Draft","PendingApproval","Open","InTransit","Delivered","Deleted","PendingDetails","PendingPickup","Cancelled"],"x-enum-varnames":{"name":"FreightStatusCode","modelAsString":true},"x-ms-enum":{"name":"FreightStatusCode","modelAsString":true},"title":"FreightStatusCode"},"carriersReference":{"type":"string","description":"Literal reference id shown in system and invoice.","nullable":true,"example":"MySysRef#405"}},"additionalProperties":false,"description":"A freight order","title":"FreightStatusUpdateResponse"}}}},"400":{"description":"Freight not found, invalid status supplied, or external system not defined.","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}},"401":{"description":"Api-token missing or Unauthorized client"}}}
+>
+  
+</StatusCodes>
+
+
+      

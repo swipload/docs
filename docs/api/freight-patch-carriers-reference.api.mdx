@@ -1,0 +1,71 @@
+---
+id: freight-patch-carriers-reference
+title: "Update Carriers Reference"
+description: "Update carriersReference."
+sidebar_label: "Update Carriers Reference"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV8tu6zYQ/RVili1vEttZtFrVN23RoAWa5gEUCLwYSyOL91Ikw0cSV9C/F6OHn0luim7jjSVqOHNm5vBo1EDEVYDsHn71pFZVhIWEgkLulYvKGsjgzhUYSeTovSIfrqkkTyanE5BgHXlku8sCstHFFca8ujg0BwmeHhKF+NkWa8gayK2JZCJfonNa5Z2n0y+BwzYQ8opq5CvepzwVDPMIBgOOa0eQgV1+oTyCBOcZWFQUeHvZw2KIzWiqTKQVeThMdi6SUQ+JhCqEMuLmSTltsQAJpfU1xn7rbAoSTNIal5ogiz6RBHrG2vHtDz9OZ+fTSStfAJs1UCvzB5lVrCCbbKCH6JVZHcG5rUiMlRQbL+KSAW3iwWQyneEyLybTGbRc5p1o3/bPOXoqpcBXc381Vfjz74u/JrNzaFsJWBSK/aK+2ql/iTrQYdzPGEjkGkMQpfVi5J6EqGLnd1g5YlFPxuueSF3USM/xgzMfnPkvnNmVm+++/yDPB3neTZ5W7rCDwXULwVkT+uZPz874bz/8kVsRUp5TCGXSei1SF6TgN+q7X4qHFHyzGGOW85xNrikk3SXTSjh/Ce9QDWFsFKVNppBCmUfUqhAFRhQhMTYqpLBe0HMkb1CLsA6R6m5TQaUy/zOj/UPVPz3m1z5V2k2u77AMEWMKLx7Sbxy+lvkVUel3xVEmRHzleBwYv8rqZpsZXHm71FT/3CEImz5Ojvs4d+pTtF/JiFqFoMyK+3VnMMXKevUPFSLXipvDHmqKleU5zvEAxw1A1gw4HfTsdFQXvzPTBcqTV3EN2X3D4X4nvly0i+2jG+5w38TRYFMH7BeOVHGLO4Uo0DlCzxoRKxIVYdE1yWA9+OiNgUsNGQwGnBOz7Ho7dv4y6sieSA/6+aJ87mndntRtpYjDlrbLaujQKGUnl8yofkQOJ3OnhvOAeXcehgRGa3GTnLOeuU91Ry4I/cpPYXRoLMd7JB/6Sj2e8b2zIdZodnwOU/uxlh/WemcOf3PUHxrWjVtOozIcN/nuBPREuR9rCttK+t23ZmVDZLOmWWKgO6/blpcfEvmONBIe0av+NNwvWjk2kqn1lWkDFz3UT7cMhs116hlwoCutHHfM85xcfNN2sUP9q/ntxW8gYTl8o9S24E0en7j5+AQZdJ89XUO7UYHXGtBoVglXbNs75d+/97miMw==
+sidebar_class_name: "patch api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update Carriers Reference"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/freight/carriersreference"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update carriersReference.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"required":["carriersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","nullable":true,"example":8923421},"carriersReference":{"minLength":1,"type":"string","description":"The Carriers Reference Id","example":"1123abcd123"},"reference":{"type":"string","description":"The Swipref, a unique id in Swipload","nullable":true,"example":"OXCQ134"}},"additionalProperties":false,"description":"Base class for Freight","title":"FreightCarriersReferenceUpdateRequest"}},"text/json":{"schema":{"required":["carriersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","nullable":true,"example":8923421},"carriersReference":{"minLength":1,"type":"string","description":"The Carriers Reference Id","example":"1123abcd123"},"reference":{"type":"string","description":"The Swipref, a unique id in Swipload","nullable":true,"example":"OXCQ134"}},"additionalProperties":false,"description":"Base class for Freight","title":"FreightCarriersReferenceUpdateRequest"}},"application/*+json":{"schema":{"required":["carriersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","nullable":true,"example":8923421},"carriersReference":{"minLength":1,"type":"string","description":"The Carriers Reference Id","example":"1123abcd123"},"reference":{"type":"string","description":"The Swipref, a unique id in Swipload","nullable":true,"example":"OXCQ134"}},"additionalProperties":false,"description":"Base class for Freight","title":"FreightCarriersReferenceUpdateRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"CarriersReference successfully updated.","content":{"application/json":{"schema":{"type":"object","additionalProperties":false,"title":"ActionResult"}}}},"400":{"description":"Freight not found, invalid data supplied, or external system not defined.","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}},"401":{"description":"Api-token missing or Unauthorized client"}}}
+>
+  
+</StatusCodes>
+
+
+      

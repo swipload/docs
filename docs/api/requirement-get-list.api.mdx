@@ -1,0 +1,71 @@
+---
+id: requirement-get-list
+title: "Get the available freight requirements list"
+description: "List of all the available requirements that can be added to a freight"
+sidebar_label: "Get the available freight requirements list"
+hide_title: true
+hide_table_of_contents: true
+api: eJy9VU1vEzEQ/SvWnEDaflA47YkgUFWBAFF6qip1sjvJmnpt154NhGj/Oxp7t9kmqVQkRC5J7Jk3H+/NeAOMywjlNXyj+04Hasky3BRQU6yC9qydhRI+6cjKLRQao7ghhSvUBueGVNi6RcUNsqrQqjkprGuqFTuFahFILxuGApyngIJ5UUM5DXlOLDGgAI8BW2IKktUGLLYEJRi0SyhASzL3HYU17Kb4Jf1Aox4AJHgkTgkH4i5YJTAdLkktXFDvt/7HKrvHUt2SPbq6vH1R0wI7wy+VC+r287sj626PoYBYNdQilBvgtZfMIgdtl9D3NwUEit7ZSFHuz05P5euJRh5sIBRQOctCQbkB9N7oKrXr5EcU981+eAwBpRmaqU1hB7xaOL2jtXA5mLr5D6pSi4PwwDrnKUZ75ex295wSvaQ6q++7R1mrO1pLZ2xnUkVQcuio30F4doAp8sTkQIS+AKxrnWn/OqlpgSbSboDZKMNpBCiANQviI/338ingzemrfQZnXh+xuyOrWh2jtksRyJXFjhsX9G+qVWV0hv5bLp8gKN/uN3Cv4UMpz7CMjNxNwEFbpiUFKGDhQoucj16fHeaVUZtnxdE2MtrqOUk9yeZmWxl8DW5uqH2fMogjTy1x42ShLClvEG6ghJPHPEequqB5nbbKzOuPIvvrGxnb8epSCMk9Hw22c5YP9lS1VUMXWaH3hEFpm6TcENapp8MSw9F43GSDQZ86tXAp3FDp5U/tjcP6+EKYyUszHs+8HnSFVdLVgDxaq8vOexekXmoTSRDzyds4AloHfQErCjGXsDqV/95FbtFOMM+H1bldVQcGKCqT1/bOsD9I/589HQMPTL/4xBvUVrLuQtJhZvwawuM3rHGR5XizmWOkq2D6Xo7z+yEyqHWUTOrDK2NaxX96XQ4WmRb0+AKu0HRiAiLcFQadR+j6pi9GOUll2WdWVeR54rW3hgTlYXzOP3yHvv8DwYTUcw==
+sidebar_class_name: "get api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get the available freight requirements list"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/requirement"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List of all the available requirements that can be added to a freight
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"lang","in":"query","description":"Optional parameter to set the return language for Description. Options: `en-US`(default) or `NB-no`.","schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"List of available requirements","content":{"application/json":{"schema":{"type":"array","items":{"required":["key"],"type":"object","properties":{"key":{"type":"string","description":"Gets the unique requirement key.","nullable":true},"description":{"type":"string","description":"Gets the requirement description.","nullable":true}},"additionalProperties":false,"description":"A freight requirement","title":"Requirement"}}}}},"401":{"description":"Api-token missing or Unauthorized client","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

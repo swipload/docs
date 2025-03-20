@@ -1,0 +1,71 @@
+---
+id: freight-patch-shippers-reference
+title: "Update Shippers Reference"
+description: "Update shippersReference."
+sidebar_label: "Update Shippers Reference"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1z2zYQ/SuYPbaMbck5tDxFTZOJJz14/HHy6LAiViISEIDxYVvl8L93FiQlWXRdz/SSQ3QRCS523+57WGwLETcByjv47Elt6gjLAiSFyisXlTVQwq2TGEmEWjlHPlzRmjyZik6gAOvII9tdSChHF5cYq/r62BwK8HSfKMQ/rNxC2UJlTSQT+RGd06rKnk6/BQ7bQqhqapCfeJ/yJBnmuo9xIaGACSQGH7eOoAS7+kZVhAKcZ5BRUWBX++1lO5oqE2lDHo4TX4hk1H0ioaRQRlw/KqctcuC19Q3Gfuv5HAqgJ2ycJih/+31+/n4+614CV7bQKPMXmU2soZztoIboldlMwt/UJMYqip0XkTPfxYPZbH6Oq0rO5ufQdQWglIodoL48SHyNOtBxACggqpi9DMxNSOu5v+p5y/4jPcWfFP3QFB0epl9+/cnVj8tVVxyQEX2ivBCcNaGv7/zsjP+eB5q4FSFVFYWwTlpvRcpBJLfnN3fYY5ZfTXvMclGxyRWFpHMyXQHvX8I7VEMYG8XaJiMLocwDaiWFxIgiJMZGshDWC3qK5A1qEbYhUpM3SVor8z8zeq7b/ms7kYxJWuOKsxvYGHJ9g2WIGFN48RxM9D3ZLCmi0m+Ko0yIOOj/P4z/Vb/tPjO49HalqfkzIwg7HmdTHhdOvYv2OxnRqBCU2TBftwZTrK1Xf5MUlVZMDntoKNaWhwLH0wATgHxM4XRoGafjgfYHA0KgKnkVt1DetRzuK/HjslvuP10zwz2Jo8GuDtgvTBrPHncKUaBzhJ5bUKxJ1IQyk2SwGXz0xsClhhIGA86JVXa1n2E+jV3jWR8cWtaLHet5e+EAa5vxD1yMPfHkgrXTT1bhZOHUoHyssvIHqKO1uE7OWc8qpybLCEK/8iGMDo3leA/kQ1+ThzN+dzbEBs2Bz2HYmzbK46oejG+vTogDNXlscBqV4bjJZ633kthdQgdXkD+8gmobIpu17QoD3Xrddbx8n8hneRTwgF71ur9bdsVIGYvoOwsEPvZQ390wGDbXqef6qIN0xbhjUVXk4qu2ywORXy5uPn6BAlbDaNtYyZs8PvLYi4/99WBz7bJ281oLGs0m4YZte6f8+wesFQeT
+sidebar_class_name: "patch api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update Shippers Reference"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/freight/shippersreference"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update shippersReference.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"required":["freightId","shippersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"shippersReference":{"minLength":1,"type":"string","description":"The Shippers Reference Id","example":"1123abcd123"}},"additionalProperties":false,"description":"","title":"FreightShippersReferenceUpdateRequest"}},"text/json":{"schema":{"required":["freightId","shippersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"shippersReference":{"minLength":1,"type":"string","description":"The Shippers Reference Id","example":"1123abcd123"}},"additionalProperties":false,"description":"","title":"FreightShippersReferenceUpdateRequest"}},"application/*+json":{"schema":{"required":["freightId","shippersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"shippersReference":{"minLength":1,"type":"string","description":"The Shippers Reference Id","example":"1123abcd123"}},"additionalProperties":false,"description":"","title":"FreightShippersReferenceUpdateRequest"}}},"required":true}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"ShippersReference successfully updated.","content":{"application/json":{"schema":{"type":"object","additionalProperties":false,"title":"ActionResult"}}}},"400":{"description":"Freight not found, invalid data supplied, or external system not defined.","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}},"401":{"description":"Api-token missing or Unauthorized client"}}}
+>
+  
+</StatusCodes>
+
+
+      
