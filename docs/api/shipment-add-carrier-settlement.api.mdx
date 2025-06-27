@@ -1,0 +1,71 @@
+---
+id: shipment-add-carrier-settlement
+title: "Create or update carrier shipment cost settlement"
+description: "Set the shipment price and expenses for a specific shipment. If 'final' the carrier settlement will be confirmed."
+sidebar_label: "Create or update carrier shipment cost settlement"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWEtz2zYQ/iuYPfWB2EyaXnSq4iQznmamrmWfFB0gcikhAQEYD9sqh/89syAp0Xo0cuOZXqQTBS4W+/j2W2JrCGLhYTSFyVLaCnWAGYcCfe6kDdJoGMEEAwtLZL6TYNbJHJnQBcNHi9qjZ6VxTDBvMZelzNeiZ+yyZJ+hlFqoz5C05MI5iY55DEFh0vcglWJzZLnRpXQVFmfAwVh0giy4LMiGTuG4KC5aBZP1fuBghRMVBnTkSg1aVAgj6K24xhId6hyBgySPrAhL4ODwLkqHBYyCi8jB50usBIxqCCubFAQn9QKaZtYKow/vTLEiidzoQGePahDWKpknW8+/eApZvavKzL9gnkx15FmQ6OltCuVATMdqjg72pKAPVtSyywBwKI2rRIARFCbOFa3oqJSgx+RTw+EuCh1kWH3/kL87SRYMZaOKKkirJBZsvkqpe+7RZUR1hS5HHcRir5dHKAlGqbEuPqJzqwvjw39WE4T6ZEQh9eJGVvijqm61ehFloigkxV+oD10tDRQJ58SKQBuwSusbxE6fJG/Gv4OzJ5muoRKPn1AvwhJGv2cZh0rq/v9rvo1+DqIyUR/lYUMVlqtY4KX+GLF3arB1boxCoaF54vzVwNpSKI8cggwUJ+jq/Ypwt6mD8Xbc3gdDp++CkLhnz/nb6L8siZII+7TxaKr6UT+S2QQqfAwn9jixx4k9TuzxfPYYfoL88uuJRk40cqKRE408k0ZIiUNvTQ+AN9nbnbTB1e7lz8c8R+/LqNSKRVuIQFe4hsPbLNtV8E4UrLtMAX+pe1T7dvvitq9u2kAcIemDCHFYCFIHXDwFnNThtzf7NhcYhFRHnSO1D0Lnxxh1MMv1xjO4cmausHqfLPBdXt9mr3czMbbyVTBfUbNKei/1ghnHbrWIYWmc/AcLlivZXrBfKE1tTC9MgcfE9WhUD22+Rh9VSG43HCoMS0MDBGt8OyggeoHzfjRwXu8MCZpzPxwteMyjS61rWlPE/kR6nNFIoH81Ie9bB3uBDXu2C9uFPgh99IEJa1E4JnUq+SWKIsWjm2OIXrifX3QC5CBl4HozmvjwKCrbArzr6tmw+2a7/TDb192yQ70qO9x5sv19ZLqNujW4e0LPDtF1wvxszZ7reilNCnCX/MmDtGTM2SXhqJ0Z+bOxlR1sRZ5g28Wyl2aTaK1xlGGsUqmCb1f+8L1Cncj8Hp1vLb/P6D8hqRJ6oPPCoQhIxdOS34az+4lZbnxgT2C11QvX9fU/Tds6tKZbqFVCavI0usRgbc1M1+M04DDaN1ob+DfjsEygmEJdz4XHW6eahpbvIrpUQBzuhZMtuRFGpKfnYl3bBwP003X3/fEzO2R4X3uaCu9eqEj/gMNXKs09Y8Fm1vC+qMiYVu6iPfLVDWnb6Nnhv4b3O8Z5jjb8q+xswElXf01ugMO8GylWiRbBiQeaTYqH1maTQtB+eNFaDUroRUy1C61O+n0DVSewig==
+sidebar_class_name: "post api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create or update carrier shipment cost settlement"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/shipment/{shipmentReference}/settlement"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Set the shipment price and expenses for a specific shipment. If "final" the carrier settlement will be confirmed.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"shipmentReference","in":"path","required":true,"schema":{"type":"string"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"content":{"application/json":{"schema":{"type":"object","properties":{"price":{"type":"number","description":"Settlement unit price","format":"double","nullable":true},"quantity":{"type":"number","description":"Quantity to be multiplied by the unit price","format":"double","nullable":true},"fuelPercentage":{"type":"number","format":"double","nullable":true},"tollAndFerryCost":{"type":"number","format":"double","nullable":true},"totalLoadingTimeCost":{"type":"number","format":"double","nullable":true},"totalUnloadingTimeCost":{"type":"number","format":"double","nullable":true},"additionalExpenses":{"type":"array","items":{"required":["description"],"type":"object","properties":{"description":{"maxLength":500,"minLength":1,"type":"string"},"amount":{"type":"number","format":"double"},"includeInFuelExpense":{"type":"boolean"}},"additionalProperties":false,"title":"CarrierPriceSettlementAdditionalExpenseDto"},"nullable":true},"final":{"type":"boolean","description":"If set to true the carrier settlement will be confirmed"}},"additionalProperties":false,"title":"CarrierPriceSettlementDto"}},"text/json":{"schema":{"type":"object","properties":{"price":{"type":"number","description":"Settlement unit price","format":"double","nullable":true},"quantity":{"type":"number","description":"Quantity to be multiplied by the unit price","format":"double","nullable":true},"fuelPercentage":{"type":"number","format":"double","nullable":true},"tollAndFerryCost":{"type":"number","format":"double","nullable":true},"totalLoadingTimeCost":{"type":"number","format":"double","nullable":true},"totalUnloadingTimeCost":{"type":"number","format":"double","nullable":true},"additionalExpenses":{"type":"array","items":{"required":["description"],"type":"object","properties":{"description":{"maxLength":500,"minLength":1,"type":"string"},"amount":{"type":"number","format":"double"},"includeInFuelExpense":{"type":"boolean"}},"additionalProperties":false,"title":"CarrierPriceSettlementAdditionalExpenseDto"},"nullable":true},"final":{"type":"boolean","description":"If set to true the carrier settlement will be confirmed"}},"additionalProperties":false,"title":"CarrierPriceSettlementDto"}},"application/*+json":{"schema":{"type":"object","properties":{"price":{"type":"number","description":"Settlement unit price","format":"double","nullable":true},"quantity":{"type":"number","description":"Quantity to be multiplied by the unit price","format":"double","nullable":true},"fuelPercentage":{"type":"number","format":"double","nullable":true},"tollAndFerryCost":{"type":"number","format":"double","nullable":true},"totalLoadingTimeCost":{"type":"number","format":"double","nullable":true},"totalUnloadingTimeCost":{"type":"number","format":"double","nullable":true},"additionalExpenses":{"type":"array","items":{"required":["description"],"type":"object","properties":{"description":{"maxLength":500,"minLength":1,"type":"string"},"amount":{"type":"number","format":"double"},"includeInFuelExpense":{"type":"boolean"}},"additionalProperties":false,"title":"CarrierPriceSettlementAdditionalExpenseDto"},"nullable":true},"final":{"type":"boolean","description":"If set to true the carrier settlement will be confirmed"}},"additionalProperties":false,"title":"CarrierPriceSettlementDto"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"204":{"description":"Price and expenses successfully updated."},"400":{"description":"Bad request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}},"401":{"description":"Api-token missing or Unauthorized client","content":{"application/json":{"schema":{"type":"object","properties":{"statusCode":{"type":"integer","format":"int32"}},"additionalProperties":false,"title":"UnauthorizedResult"}}}}}}
+>
+  
+</StatusCodes>
+
+
+      

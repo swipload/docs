@@ -40,6 +40,18 @@ const sidebar: SidebarsConfig = {
           label: "Update Shippers Reference",
           className: "api-method patch",
         },
+        {
+          type: "doc",
+          id: "api/freight-add-carrier-settlement",
+          label: "Create or update carrier freight cost settlement",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/freight-upload-freight-attachment",
+          label: "FreightUploadFreightAttachment",
+          className: "api-method put",
+        },
       ],
     },
     {
@@ -63,6 +75,18 @@ const sidebar: SidebarsConfig = {
           id: "api/shipment-create",
           label: "Create a Shipment",
           className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/shipment-add-carrier-settlement",
+          label: "Create or update carrier shipment cost settlement",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
+          id: "api/shipment-confirm-carrier-settlement",
+          label: "Confirm carrier shipment settlement",
+          className: "api-method patch",
         },
       ],
     },
