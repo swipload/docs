@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: 3.0.4
 info:
   title: Swipload.Integrations.Api
   contact:
@@ -170,6 +170,86 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+  '/freight/{freightReference}/settlement':
+    post:
+      tags:
+        - Freight
+      summary: Create or update carrier freight cost settlement
+      description: Set the freight price and expenses for a specific freight
+      operationId: FreightAddCarrierSettlement
+      parameters:
+        - name: freightReference
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarrierPriceSettlementDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CarrierPriceSettlementDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CarrierPriceSettlementDto'
+      responses:
+        '204':
+          description: Price and expenses successfully updated.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResult'
+  '/freight/{reference}/attachment':
+    put:
+      tags:
+        - Freight
+      operationId: FreightUploadFreightAttachment
+      parameters:
+        - name: reference
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DocumentBase64Dto'
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DocumentBase64Dto'
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/DocumentBase64Dto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightPostResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   /requirement:
     get:
       tags:
@@ -232,6 +312,73 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+  '/shipment/{shipmentReference}/settlement':
+    post:
+      tags:
+        - Shipment
+      summary: Create or update carrier shipment cost settlement
+      description: Set the shipment price and expenses for a specific shipment. If "final" the carrier settlement will be confirmed.
+      operationId: ShipmentAddCarrierSettlement
+      parameters:
+        - name: shipmentReference
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarrierPriceSettlementDto'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CarrierPriceSettlementDto'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CarrierPriceSettlementDto'
+      responses:
+        '204':
+          description: Price and expenses successfully updated.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResult'
+  '/shipment/{shipmentReference}/settlement/confirm':
+    patch:
+      tags:
+        - Shipment
+      summary: Confirm carrier shipment settlement
+      description: This will confirm the carrier shipment settlement. This is equivalent of posting a "final" shipment carrier settlement
+      operationId: ShipmentConfirmCarrierSettlement
+      parameters:
+        - name: shipmentReference
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Price and expenses successfully updated.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResult'
 components:
   schemas:
     ActionResult:
@@ -246,6 +393,8 @@ components:
         - senderContactCompany
       type: object
       properties:
+        freightType:
+          $ref: '#/components/schemas/FreightType'
         statusId:
           $ref: '#/components/schemas/FreightStatusCode'
         externalFreightId:
@@ -377,6 +526,12 @@ components:
             $ref: '#/components/schemas/FreightLineBaseDto'
           description: Gets or sets the freight lines.
           nullable: true
+        documentList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentBase64Dto'
+          description: Gets or sets the document list.
+          nullable: true
       additionalProperties: false
       description: A freight order for transport
     AddFreightResponse:
@@ -394,6 +549,12 @@ components:
           example: DPOS4972
         status:
           $ref: '#/components/schemas/FreightStatusCode'
+        documentBase64Results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentBase64ResultDto'
+          description: Gets or sets the document base64 results.
+          nullable: true
       additionalProperties: false
       description: A freight order for transport
     AddShipmentRequest:
@@ -408,9 +569,9 @@ components:
           description: Gets or sets the external shipment identifier.
         assignee:
           type: string
-          description: User identifier for owner / assignee of freight in Swipload
+          description: User identifier for owner / Assignee of freight in Swipload / Email in the case of a department user
           nullable: true
-          example: albrektm
+          example: albrektm / email@domain.tld
         shippersReference:
           type: string
           description: Gets or sets the shippers internal shipment reference.
@@ -420,11 +581,19 @@ components:
           type: string
           description: Gets or sets the name of the project.
           nullable: true
+        projectNumber:
+          type: string
+          description: 'Gets or sets the number of the project, if set this will be the unique identifier for this project, if not set, the ProjectName will be used.'
+          nullable: true
         freights:
           type: array
           items:
             $ref: '#/components/schemas/AddFreightRequest'
-          description: Gets or sets the freights.
+          description: Freights to be added to the Shipment
+        targetDepartment:
+          type: string
+          description: 'If company departments are enabled for the shipper, this is required'
+          nullable: true
       additionalProperties: false
       description: The Swipload.Integrations.Api.Models.Requests.AddShipmentRequest class.
     AddShipmentResponse:
@@ -447,6 +616,84 @@ components:
           nullable: true
       additionalProperties: false
       description: A shipment order for transport
+    CarrierPriceSettlementAdditionalExpenseDto:
+      required:
+        - description
+      type: object
+      properties:
+        description:
+          maxLength: 500
+          minLength: 1
+          type: string
+        amount:
+          type: number
+          format: double
+        includeInFuelExpense:
+          type: boolean
+      additionalProperties: false
+    CarrierPriceSettlementDto:
+      type: object
+      properties:
+        price:
+          type: number
+          description: Settlement unit price
+          format: double
+          nullable: true
+        quantity:
+          type: number
+          description: Quantity to be multiplied by the unit price
+          format: double
+          nullable: true
+        fuelPercentage:
+          type: number
+          format: double
+          nullable: true
+        tollAndFerryCost:
+          type: number
+          format: double
+          nullable: true
+        totalLoadingTimeCost:
+          type: number
+          format: double
+          nullable: true
+        totalUnloadingTimeCost:
+          type: number
+          format: double
+          nullable: true
+        additionalExpenses:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarrierPriceSettlementAdditionalExpenseDto'
+          nullable: true
+        final:
+          type: boolean
+          description: If set to true the carrier settlement will be confirmed
+      additionalProperties: false
+    DocumentBase64Dto:
+      type: object
+      properties:
+        fileName:
+          type: string
+          nullable: true
+        fileContentType:
+          type: string
+          nullable: true
+        fileContentBase64:
+          type: string
+          nullable: true
+      additionalProperties: false
+    DocumentBase64ResultDto:
+      type: object
+      properties:
+        fileName:
+          type: string
+          nullable: true
+        success:
+          type: boolean
+        errorMessage:
+          type: string
+          nullable: true
+      additionalProperties: false
     ExternalUpdateFreightStatusCode:
       enum:
         - InTransit
@@ -616,7 +863,7 @@ components:
           $ref: '#/components/schemas/TimeFlexibility'
         fromDate:
           type: string
-          description: Earliest point in time
+          description: 'Earliest point in time, if null this will be set to the current time'
           format: date-time
         toDate:
           type: string
@@ -643,6 +890,8 @@ components:
           description: Unique shipment id in source system
           nullable: true
           example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
+        freightType:
+          $ref: '#/components/schemas/FreightType'
         statusId:
           $ref: '#/components/schemas/FreightStatusCode'
         shippersReference:
@@ -826,6 +1075,12 @@ components:
             $ref: '#/components/schemas/FreightLineBaseDto'
           description: Freight lines (varelinjer)
           nullable: true
+        documentList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentBase64Dto'
+          description: Gets or sets the document list.
+          nullable: true
       additionalProperties: false
       description: A freight order for transport
     FreightPostResponse:
@@ -870,6 +1125,12 @@ components:
           description: Literal reference id shown in system and invoice.
           nullable: true
           example: MySysRef#405
+        documentBase64Results:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentBase64ResultDto'
+          description: Gets or sets the document base64 results.
+          nullable: true
       additionalProperties: false
       description: A freight order for transport
     FreightShippersReferenceUpdateRequest:
@@ -976,6 +1237,23 @@ components:
           example: MySysRef#405
       additionalProperties: false
       description: A freight order
+    FreightType:
+      enum:
+        - Standard
+        - Return
+        - PickupByCustomer
+      type: string
+      description: Freight type id enum.
+      x-enumNames:
+        - Standard
+        - Return
+        - PickupByCustomer
+      x-enum-varnames:
+        name: FreightType
+        modelAsString: true
+      x-ms-enum:
+        name: FreightType
+        modelAsString: true
     ProblemDetails:
       type: object
       properties:
@@ -1029,6 +1307,13 @@ components:
       x-ms-enum:
         name: TimeFlexibility
         modelAsString: true
+    UnauthorizedResult:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+      additionalProperties: false
   securitySchemes:
     ApiKey:
       type: apiKey
