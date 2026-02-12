@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -42,8 +43,8 @@ Update shippersReference.
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
@@ -53,16 +54,13 @@ Update shippersReference.
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={{"content":{"application/json":{"schema":{"required":["freightId","shippersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"shippersReference":{"minLength":1,"type":"string","description":"The Shippers Reference Id","example":"1123abcd123"}},"additionalProperties":false,"description":"","title":"FreightShippersReferenceUpdateRequest"}},"text/json":{"schema":{"required":["freightId","shippersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"shippersReference":{"minLength":1,"type":"string","description":"The Shippers Reference Id","example":"1123abcd123"}},"additionalProperties":false,"description":"","title":"FreightShippersReferenceUpdateRequest"}},"application/*+json":{"schema":{"required":["freightId","shippersReference"],"type":"object","properties":{"freightId":{"type":"integer","description":"A unique id in Swipload","format":"int32","example":8923421},"shippersReference":{"minLength":1,"type":"string","description":"The Shippers Reference Id","example":"1123abcd123"}},"additionalProperties":false,"description":"","title":"FreightShippersReferenceUpdateRequest"}}},"required":true}}
+  {...require("./freight-patch-shippers-reference.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"ShippersReference successfully updated.","content":{"application/json":{"schema":{"type":"object","additionalProperties":false,"title":"ActionResult"}}}},"400":{"description":"Freight not found, invalid data supplied, or external system not defined.","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}},"401":{"description":"Api-token missing or Unauthorized client"}}}
+  {...require("./freight-patch-shippers-reference.StatusCodes.json")}
 >
   
 </StatusCodes>

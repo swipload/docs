@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -42,27 +43,24 @@ This will confirm the carrier shipment settlement. This is equivalent of posting
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"shipmentReference","in":"path","required":true,"schema":{"type":"string"}}]}
+  {...require("./shipment-confirm-carrier-settlement.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={undefined}
+  {...require("./shipment-confirm-carrier-settlement.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"204":{"description":"Price and expenses successfully updated."},"400":{"description":"Bad request","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}},"401":{"description":"Api-token missing or Unauthorized client","content":{"application/json":{"schema":{"type":"object","properties":{"statusCode":{"type":"integer","format":"int32"}},"additionalProperties":false,"title":"UnauthorizedResult"}}}}}}
+  {...require("./shipment-confirm-carrier-settlement.StatusCodes.json")}
 >
   
 </StatusCodes>

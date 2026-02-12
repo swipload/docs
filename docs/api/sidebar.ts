@@ -48,8 +48,20 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/freight-update-freight-by-reference",
+          label: "Update freight, settlements and expenses",
+          className: "api-method patch",
+        },
+        {
+          type: "doc",
           id: "api/freight-upload-freight-attachment",
           label: "FreightUploadFreightAttachment",
+          className: "api-method put",
+        },
+        {
+          type: "doc",
+          id: "api/freight-upload-freight-signature-attachment",
+          label: "FreightUploadFreightSignatureAttachment",
           className: "api-method put",
         },
       ],
@@ -87,6 +99,12 @@ const sidebar: SidebarsConfig = {
           id: "api/shipment-confirm-carrier-settlement",
           label: "Confirm carrier shipment settlement",
           className: "api-method patch",
+        },
+        {
+          type: "doc",
+          id: "api/shipment-respond-to-shipment-request",
+          label: "Respond to a shipment request (accept or reject)",
+          className: "api-method post",
         },
       ],
     },

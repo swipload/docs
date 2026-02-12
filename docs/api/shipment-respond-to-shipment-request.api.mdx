@@ -1,0 +1,70 @@
+---
+id: shipment-respond-to-shipment-request
+title: "Respond to a shipment request (accept or reject)"
+description: "This endpoint allows a carrier to accept or reject a shipment request."
+sidebar_label: "Respond to a shipment request (accept or reject)"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV01z2zYQ/SuYPdktJDuOe+GpTtqZZjrTeiTl5OiwJlciYhJAAFC2y+F/zyxASrQk126nhx7MEwku9uPt28WihYBrD9kNzEtla9IBlhIK8rlTNiijIYNFqbwgXVijdBBYVebeCxQ5OqfIiWAE5jnZIIwTjr5SHgQK36sTjr415MP0i/uiFyVtt9WND6LEDQkUlnSh9Ppgk1gZJwKbH/5MQYKx5JB9+1RAtvV7Rt4aXSzMbiHqAAkWHdYUyHGgLWisCTLwW7kVOdI5gQTF8VoMJRyCQGP3+i3ihKbrqRTz395dvL/86RQksOvKUQFZcA1J8HlJNULWQni00W5wSq+h65ZJmHz4YIpHljg06WJUngTmvCpOrrZQzyLUpwJ1IUzcg5XITR2TKCE3OvBb1gJaW6k8Qnb21bPuduTWzuEbSFaYAr2z5paNMIaOYQ+KfNSY5LIWSDc170x+gYTk1khFH+8+oFcpoGBEwDsSRh8hDUh4mLCFP7Am/4yZJDHZoNNJapvhPSYkiyChNgVVV36eHIt56lhP7ScpnH+pIahQPb+r6yRgUaiUqesRniusPO3j029mgBIJilhphzVysl99zMJnXJn1dBpqg30K9BDeaPFGiz1ajJvGDz++8eONH2N+sFfD2RSxuzg/PzzB5k2ek/erpqoehXWGP6gQ4elZmvwZtE2hk3B5TNsHLLbSk50CbXhOaPgUdEKb7TCxI8Orj8K/Z2/6u3+OS9BNVeEt4/Y0oa+Q9AFDM1IOSgdakwMJK+NqDGnp/cWxzQUFVNWr7CjtA/KI87Lws3RrR1S9dua2ovqX6IHv+XB5/u4waZ81NqE0Tv1FhZiIHKuKnCgM+Zi4FwbA/y55CemPpqDXoP1i0Q1AjMObkW+qVBydhJpCaXhAtaYfQkMJGZwNIZ61BwNod9aHfdaXLkjwlDdOhcc4uV5Z9Tvx65KHx+HXnCFIUQ4C2wgxLRx0UasmwdyRTmM4WkvohNKxNEvCIoLSdzMchIcBuRfgKDkNs90Q++sD1jZxf+j1Q++NLFyZ6NvQZe6VrQwW00+chzTT++mVVX3aMQ/jptpLi3ljrXGMKdWxAMCnlZ/9oFAbtrch55MPm3P+5kzUqEc6Z/+8RT4Bst3R8393TeoZEMc7W6HSDEHjYsNIZLzZ3oFAQnbsPrQrw4GRSwklEzq7gba9RU+fXdV1vPytIRe5KWGDTqWWctNCoTy/F8cPrDGCJ7N+pjgVr75uHY1yIL9m5m+wavgLJNxxbRy5+HXLTg6sZpeT3Mfk2GTB2nZ6DrpQJ4cd2zHjednlqDNc/zlfgITb/vZXx+YEDu8Zb7xPPqerXazuuNZChXrd4Jplk05+vgP4XZMF
+sidebar_class_name: "post api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Respond to a shipment request (accept or reject)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/shipment/{shipmentReference}/request/respond"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+This endpoint allows a carrier to accept or reject a shipment request.
+The carrier must have a pending shipment request for this shipment.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./shipment-respond-to-shipment-request.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./shipment-respond-to-shipment-request.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./shipment-respond-to-shipment-request.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      
