@@ -19,7 +19,6 @@ const config: Config = {
   projectName: 'docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   trailingSlash: false,
 
@@ -80,7 +79,7 @@ const config: Config = {
             // the <id> referenced when running CLI commands
             specPath: 'openapis/integrations/swagger.yaml', // path to OpenAPI spec, URLs supported
             outputDir: 'docs/api', // output directory for generated files
-            sidebarOptions: {              
+            sidebarOptions: {
               // optional, instructs plugin to generate sidebar.js
               groupPathsBy: 'tag', // group sidebar items by operation "tag"
               categoryLinkSource: 'tag',
@@ -109,7 +108,7 @@ const config: Config = {
         {
           type: 'dropdown',
           label: 'API',
-          position: 'left',          
+          position: 'left',
           items: [
             {
               label: 'Integrations',
@@ -180,6 +179,13 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownImages: 'throw',
+    },
+  },
 };
 
 export default config;

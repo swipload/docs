@@ -18,6 +18,7 @@ import StatusCodes from "@theme/StatusCodes";
 import OperationTabs from "@theme/OperationTabs";
 import TabItem from "@theme/TabItem";
 import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
 
 <Heading
   as={"h1"}
@@ -42,27 +43,24 @@ List of all the available requirements that can be added to a freight
   id={"request"}
   as={"h2"}
   className={"openapi-tabs__heading"}
-  children={"Request"}
 >
+  <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={[{"name":"lang","in":"query","description":"Optional parameter to set the return language for Description. Options: `en-US`(default) or `NB-no`.","schema":{"type":"string"}}]}
+  {...require("./requirement-get-list.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  title={"Body"}
-  body={undefined}
+  {...require("./requirement-get-list.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  id={undefined}
-  label={undefined}
-  responses={{"200":{"description":"List of available requirements","content":{"application/json":{"schema":{"type":"array","items":{"required":["key"],"type":"object","properties":{"key":{"type":"string","description":"Gets the unique requirement key.","nullable":true},"description":{"type":"string","description":"Gets the requirement description.","nullable":true}},"additionalProperties":false,"description":"A freight requirement","title":"Requirement"}}}}},"401":{"description":"Api-token missing or Unauthorized client","content":{"application/json":{"schema":{"type":"object","properties":{"type":{"type":"string","nullable":true},"title":{"type":"string","nullable":true},"status":{"type":"integer","format":"int32","nullable":true},"detail":{"type":"string","nullable":true},"instance":{"type":"string","nullable":true}},"additionalProperties":{},"title":"ProblemDetails"}}}}}}
+  {...require("./requirement-get-list.StatusCodes.json")}
 >
   
 </StatusCodes>

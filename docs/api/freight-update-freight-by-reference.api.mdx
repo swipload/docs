@@ -1,0 +1,69 @@
+---
+id: freight-update-freight-by-reference
+title: "Update freight, settlements and expenses"
+description: "Update freight and set the shipment price and expenses for a specific shipment. If 'final' the carrier settlement will be confirmed."
+sidebar_label: "Update freight, settlements and expenses"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWktz2zYQ/iuYPTUN7dBu2ml5qqIkU099UP241NEBIpciEhBAgKVtVaP/3gFISpQoJWqdzng69IkEFot97ydzl0B87iC5g/cWxbwgmEaQoUutMCS0ggRuTcYJWV7vM64y5pAYFchcIUyJipixIsWwhY8GlUPHcm0ZZ85gKnKRrklP2UXOPkAuFJcfIHBJubUCredKEgO/ByElmyFLtcqFLTE7hQi0Qcu9UBcZJK28tXTNy5vFFeZoUaUIERhueYmE1uu3BMVLhAQaPbqEwqtpOBUQgcXPlbCYQUK2wghcWmDJIVkCLYw/78gKNYfValoTo6M3Olt4ilQrQkX+kRsjRRqkffXReTsu+6z07COm5CW1XjcS6PyuEemnylzq+viNKOvlLx/KrS7fckJP3pd216fvuJUCHTGjhSImFCNRIvvu9mbMtGX+buk5vYiYyJmqpAyequpQCN5RmlhacDVHRoVw7J7LCr2bcm1LTpCApz3xfCECz4LPJLZmxUdeGv8KtzfjhJ3H5z+dxGcnZ7/cxD8ncZzE8Z9rQfZuv4zPkjiGVQSkj9f7ktP/QutVBDzLhNeKy0knEHIuHUZAgsI1TV5sxdKEU1q8Je1tl6EU92gXQ7ANwfafB1tT5ye+V1yva/0R9dAf6JCpqpyh7Zl7w5JVSjQ9actYuvLm2bXUKoLPFVckaPH1S/5oKBlp35/KSpIwUmDGZovaf//w6rxCOUGboiI+36vlEUxISzlS2Xu0djHWjv41G+LyUvNMqLn33lNZ3Sr5TZhtou9dgy46jLi1fOGbOGEZ1jcd/G7LedPoK3G25ekllPzxEtWcCkh+jOMISqHa97NoFw1EwEtdqaM0XHnEkcoqwwv1vsJWqc7RmdYSuTo+9cZ7U2u0a7cmEftB6NHYnvt3o/8ir6GfZv7g0eDtqXoEsb/GYlvS0RqvapuhDWiULFfOaOs9v1OzQpm6qtFcuIrwkQbgNvTS59pLB+A2BNsA3AbgNgC3AbgNwK0D3Lr/ePv+5YDghqb6TJvqgOCGYBsQ3IDgBgQ3ILgBwa0RnL/MojO6jbXz+HUvQmDS/97sqjRF5/JKykVTyrNTb/LXcdxn8IZnrPl6C9G3+nBb7/Z7Uz9FaxMcQemIU9XNOaEI59uxLRT9cL7vcIbEhTzqHqEccZUeI9TBaFhuNIOJ1TOJ5dsggWv8+jo+63tiZMQJ6U+oWCmcE2ruO+Ot4hUV2oq/MGOpFN4538xNtU3HOsNj7Hp0AnVlvkJXyTqcVxGUSIXO6hmDtAiTCb6UwasmUV4td4cSVhCBw7SyoTPeLb2Vfkf/OPVzB+3Wtde4Vqol2BTneqGXnRtzV44YNwa5DRCpQFYgz4INmlkJ3hK3QxINgVfKW/1qM//wroU8B39EbSPXJyKjbTj4dHB5EI0/a6kPw7oGuMVdgBX3IU+8D8DEh+BIfBhcxPuhwt1utq+LStuz40MdOdSa6bpBtqVHqFyHKG+y7vpBGC/N6YVP4Ho+yJ2OjGjqBU+DPZqAbqnZdWWadoRlqJHg6pVfXctQhYZ9j9bVot8HkxvtqOSqw3N7PirqtGO31aF2U7EzL/R8Zqya4hE+fxnJhfI6VzY0kbpq3bUTVBBB0hummkZQhIC4g+Vyxh3eWrla+eXPFdpQwCK451bUDcXHh3D+OduPJrpG+u6qgZcv2CFJ29qnfOELv9kgAYjgky+N/dGv1XQVtTXNy1KTjesbT248sw2bXstZRe2JUZqioS/STjttYDK6Gf8GEcyaubEytCKw/MEPoPGHWmYdTFDjar+2BMnVvAp5CzVT//c3QwKHvg==
+sidebar_class_name: "patch api-method"
+info_path: docs/api/swipload-integrations-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Update freight, settlements and expenses"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/freight/{freightReference}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Update freight and set the shipment price and expenses for a specific shipment. If "final" the carrier settlement will be confirmed.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./freight-update-freight-by-reference.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./freight-update-freight-by-reference.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./freight-update-freight-by-reference.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"multipart/form-data":{"schema":{"required":["signatureFile"],"type":"object","properties":{"signatureFile":{"type":"string","format":"binary"}}}}}}}

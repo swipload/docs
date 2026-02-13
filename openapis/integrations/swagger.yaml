@@ -73,7 +73,7 @@ paths:
       tags:
         - Freight
       summary: Update freight status using patch
-      description: Update freight status using Swipref. Called from Carrier's TMS.
+      description: "Update freight status, total CO2(grams) and Distance(km) using Swipref. Called from Carrier's TMS."
       operationId: FreightPatchUpdateStatus
       requestBody:
         content:
@@ -209,6 +209,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/UnauthorizedResult'
+  '/freight/{freightReference}':
+    patch:
+      tags:
+        - Freight
+      summary: 'Update freight, settlements and expenses'
+      description: Update freight and set the shipment price and expenses for a specific shipment. If "final" the carrier settlement will be confirmed.
+      operationId: FreightUpdateFreightByReference
+      parameters:
+        - name: freightReference
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightPatchRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightPatchRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightPatchRequest'
+      responses:
+        '204':
+          description: Price and expenses successfully updated.
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Api-token missing or Unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResult'
   '/freight/{reference}/attachment':
     put:
       tags:
@@ -237,6 +276,50 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/DocumentBase64Dto'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightPostResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+  '/freight/{reference}/signature/{signatureType}':
+    put:
+      tags:
+        - Freight
+      operationId: FreightUploadFreightSignatureAttachment
+      parameters:
+        - name: reference
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: signatureType
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: signee
+          in: query
+          schema:
+            type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              required:
+                - signatureFile
+              type: object
+              properties:
+                signatureFile:
+                  type: string
+                  format: binary
       responses:
         '200':
           description: OK
@@ -375,6 +458,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResult'
+  '/shipment/{shipmentReference}/request/respond':
+    post:
+      tags:
+        - Shipment
+      summary: Respond to a shipment request (accept or reject)
+      description:
+        "This endpoint allows a carrier to accept or reject a shipment request.\r\nThe carrier must have a pending shipment request for this shipment."
+      operationId: ShipmentRespondToShipmentRequest
+      parameters:
+        - name: shipmentReference
+          in: path
+          description: 'The shipment reference (e.g., SH12345)'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The response action (Accept or Reject) and optional comment
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentRequestResponseRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ShipmentRequestResponseRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ShipmentRequestResponseRequest'
+      responses:
+        '200':
+          description: Successfully processed the shipment request response.
+        '400':
+          description: Bad request - shipment not found or no pending request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: Unauthorized - caller does not have a pending shipment request
           content:
             application/json:
               schema:
@@ -698,11 +823,13 @@ components:
       enum:
         - InTransit
         - Delivered
+        - Cancelled
       type: string
       description: Enum for Freight statuses that can be updated by external systems.
       x-enumNames:
         - InTransit
         - Delivered
+        - Cancelled
       x-enum-varnames:
         name: ExternalUpdateFreightStatusCode
         modelAsString: true
@@ -818,6 +945,12 @@ components:
           format: double
           nullable: true
           example: 1.1111
+        thk:
+          type: number
+          description: Thickness of horizontal elements (cm)
+          format: double
+          nullable: true
+          example: 1.1111
       additionalProperties: false
     FreightLocationDto:
       type: object
@@ -859,8 +992,6 @@ components:
           type: string
           description: Name of company or location
           nullable: true
-        timeFlexibility:
-          $ref: '#/components/schemas/TimeFlexibility'
         fromDate:
           type: string
           description: 'Earliest point in time, if null this will be set to the current time'
@@ -870,7 +1001,39 @@ components:
           description: Latest point in time
           format: date-time
           nullable: true
+        dateTimeOffsetSpan:
+          type: string
+          description: Extra info to use in DateTimeOffsets if and when needed
+          format: date-span
+          nullable: true
       additionalProperties: false
+    FreightLocationTimesPatchDto:
+      type: object
+      properties:
+        fromDateTime:
+          type: string
+          description: 'Earliest point in time (UTC or LocalTime), if null the update will not change this value.'
+          format: date-time
+          nullable: true
+          example: 'UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00'
+        toDateTime:
+          type: string
+          description: 'Latest point in time (UTC or LocalTime), if null the update will not change this value.'
+          format: date-time
+          nullable: true
+          example: 'UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00'
+      additionalProperties: false
+    FreightPatchRequest:
+      type: object
+      properties:
+        pickupLocationTimes:
+          $ref: '#/components/schemas/FreightLocationTimesPatchDto'
+        deliveryLocationTimes:
+          $ref: '#/components/schemas/FreightLocationTimesPatchDto'
+        carrierPriceSettlement:
+          $ref: '#/components/schemas/CarrierPriceSettlementDto'
+      additionalProperties: false
+      description: A freight order for transport
     FreightPostRequest:
       required:
         - deliveryLocation
@@ -1184,7 +1347,6 @@ components:
       required:
         - reference
         - statusId
-        - timeStamp
       type: object
       properties:
         reference:
@@ -1209,6 +1371,25 @@ components:
           description: Comment (Optional)
           nullable: true
           example: www.trackingurl.com
+        co2:
+          type: number
+          description: Total CO2 in grams (Optional)
+          format: double
+          nullable: true
+          example: 7600
+        distance:
+          type: number
+          description: Distance in Km (Optional)
+          format: double
+          nullable: true
+          example: 300.5
+        documentData:
+          $ref: '#/components/schemas/DocumentBase64Dto'
+        documentURL:
+          type: string
+          description: URL to external document (Optional)
+          nullable: true
+          example: https://example.com/documents/pod_12345.pdf
       additionalProperties: false
       description: Base class for Freight
     FreightStatusUpdateResponse:
@@ -1273,7 +1454,7 @@ components:
         instance:
           type: string
           nullable: true
-      additionalProperties: { }
+      additionalProperties: {}
     Requirement:
       required:
         - key
@@ -1289,24 +1470,30 @@ components:
           nullable: true
       additionalProperties: false
       description: A freight requirement
-    TimeFlexibility:
+    ShipmentRequestAction:
       enum:
-        - Flexible
-        - FixedStart
-        - FixedEnd
-        - Slot
+        - Accept
+        - Reject
       type: string
+      description: Action to take on a shipment request
       x-enumNames:
-        - Flexible
-        - FixedStart
-        - FixedEnd
-        - Slot
+        - Accept
+        - Reject
       x-enum-varnames:
-        name: TimeFlexibility
+        name: ShipmentRequestAction
         modelAsString: true
       x-ms-enum:
-        name: TimeFlexibility
+        name: ShipmentRequestAction
         modelAsString: true
+    ShipmentRequestResponseRequest:
+      required:
+        - action
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/ShipmentRequestAction'
+      additionalProperties: false
+      description: Request to respond to a shipment request (accept or reject)
     UnauthorizedResult:
       type: object
       properties:
@@ -1321,4 +1508,4 @@ components:
       name: api-token
       in: header
 security:
-  - ApiKey: [ ]
+  - ApiKey: []

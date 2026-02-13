@@ -1,0 +1,1 @@
+{"parameters":[{"name":"lang","in":"query","description":"Optional parameter to set the return language for Description. Options: `en-US`(default) or `NB-no`.","schema":{"type":"string"}}]}
