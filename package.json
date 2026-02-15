@@ -10,7 +10,7 @@
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve --port 3001",
-    "genapidocs": "docusaurus gen-api-docs integrationApi",
+    "genapidocs": "docusaurus clean-api-docs integrationApi && docusaurus gen-api-docs integrationApi",
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc"
