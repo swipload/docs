@@ -1,0 +1,1 @@
+{"schema":{"enum":["Accept","Reject"],"type":"string","description":"Action to take on a shipment request","x-enumNames":["Accept","Reject"],"x-enum-varnames":{"name":"ShipmentRequestAction","modelAsString":true},"x-ms-enum":{"name":"ShipmentRequestAction","modelAsString":true},"title":"ShipmentRequestAction"},"schemaType":"response"}

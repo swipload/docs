@@ -1,0 +1,32 @@
+---
+id: freightpatchrequest
+title: "FreightPatchRequest"
+description: "Request to update freight pickup/delivery times and carrier settlement"
+sidebar_label: "FreightPatchRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"pickupLocationTimes":{"fromDateTime":"UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00","toDateTime":"UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00"},"deliveryLocationTimes":{"fromDateTime":"UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00","toDateTime":"UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00"},"carrierPriceSettlement":{"price":0,"quantity":0,"fuelPercentage":12.5,"tollAndFerryCost":450,"totalLoadingTimeCost":200,"totalUnloadingTimeCost":200,"additionalExpenses":[{"description":"Waiting time surcharge","amount":350,"includeInFuelExpense":false}],"final":true}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"FreightPatchRequest"}
+>
+</Heading>
+
+
+
+Request to update freight pickup/delivery times and carrier settlement
+
+<Schema
+  {...require("./freightpatchrequest.Schema.json")}
+>
+  
+</Schema>
+            

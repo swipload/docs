@@ -1,0 +1,1 @@
+{"schema":{"required":["key"],"type":"object","properties":{"key":{"type":"string","description":"Gets the unique requirement key.","nullable":true},"description":{"type":"string","description":"Gets the requirement description.","nullable":true}},"additionalProperties":false,"description":"A freight requirement","title":"Requirement"},"schemaType":"response"}
