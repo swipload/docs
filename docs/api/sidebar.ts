@@ -9,6 +9,10 @@ const sidebar: SidebarsConfig = {
     {
       type: "category",
       label: "Freight",
+      link: {
+        type: "doc",
+        id: "api/freight",
+      },
       items: [
         {
           type: "doc",
@@ -19,7 +23,7 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/freight-update-freight",
-          label: "FreightUpdateFreight",
+          label: "Update a freight",
           className: "api-method patch",
         },
         {
@@ -55,32 +59,24 @@ const sidebar: SidebarsConfig = {
         {
           type: "doc",
           id: "api/freight-upload-freight-attachment",
-          label: "FreightUploadFreightAttachment",
+          label: "Upload freight attachments",
           className: "api-method put",
         },
         {
           type: "doc",
           id: "api/freight-upload-freight-signature-attachment",
-          label: "FreightUploadFreightSignatureAttachment",
+          label: "Upload freight signature",
           className: "api-method put",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Requirement",
-      items: [
-        {
-          type: "doc",
-          id: "api/requirement-get-list",
-          label: "Get the available freight requirements list",
-          className: "api-method get",
         },
       ],
     },
     {
       type: "category",
       label: "Shipment",
+      link: {
+        type: "doc",
+        id: "api/shipment",
+      },
       items: [
         {
           type: "doc",
@@ -105,6 +101,22 @@ const sidebar: SidebarsConfig = {
           id: "api/shipment-respond-to-shipment-request",
           label: "Respond to a shipment request (accept or reject)",
           className: "api-method post",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Requirement",
+      link: {
+        type: "doc",
+        id: "api/requirement",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "api/requirement-get-list",
+          label: "Get the available freight requirements list",
+          className: "api-method get",
         },
       ],
     },
