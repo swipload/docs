@@ -1,0 +1,32 @@
+---
+id: addshipmentrequest
+title: "AddShipmentRequest"
+description: "Request to create a new shipment with one or more freights"
+sidebar_label: "AddShipmentRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"externalShipmentId":"SH-2024-001","assignee":"albrektm / email@domain.tld","shippersReference":"OurInternalShipmentReference","projectName":"string","projectNumber":"string","freights":[{"freightType":"Standard","statusId":"Draft","externalFreightId":"a62f7d2b-2ddf-4c1c-9a93-98c39f05f382","shippersReference":"OurInternalFreightOrderReference","consignorsReference":"G1444-45","consigneesReference":"G1444-45","senderContactCompany":"Our company AS","senderContactPerson":"John Doe","senderContactCellphone":"+4740484410","recipientContactCompany":"Cargo Receiver AS","recipientContactPerson":"Jane Doe","recipientContactCellphone":"+4740484410","pickupLocation":{"address":"Elgfaret 72","zipCode":"3930","city":"Porsgrunn","countryCode":"NO","latitude":59.915318,"longitude":10.745938,"contactCompany":"string","fromDate":"2024-07-29T15:51:28.071Z","toDate":"2024-07-29T15:51:28.071Z","dateTimeOffsetSpan":"string"},"deliveryLocation":{"address":"Elgfaret 72","zipCode":"3930","city":"Porsgrunn","countryCode":"NO","latitude":59.915318,"longitude":10.745938,"contactCompany":"string","fromDate":"2024-07-29T15:51:28.071Z","toDate":"2024-07-29T15:51:28.071Z","dateTimeOffsetSpan":"string"},"pickupComment":"Please contact sender when it comes to the departure day.","deliveryComment":"Contact warehouse manager for instructions where to unload the goods.","sumQty":1,"sumWeight":1200,"sumVolume":12,"length":230,"width":60,"height":192,"jobDescription":"A blue container filled with rocks. Ready at the terminal on given time. Remember to always drive carefully - stay safe!","sumPallets":3,"sumLoadingMeters":9,"sumChargeableWeight":1200,"freightLines":[{"name":"Block of concrete","itemNumber":"B-123","description":"Nicely patinated with colorcode #532943","ian":"4131618458562","sscc":"230874513969584500","location":"P3","quantity":2,"pallets":0,"weight":1.1111,"volume":1.111111,"length":1.1111,"width":1.1111,"height":1.1111,"loadingMeters":1.1111,"thk":1.1111}],"documentList":[{"fileName":"delivery_note.pdf","fileContentType":"application/pdf","fileContentBase64":"JVBERi0xLjQKJcOkw7zDtsOf..."}]}],"targetDepartment":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"AddShipmentRequest"}
+>
+</Heading>
+
+
+
+Request to create a new shipment with one or more freights
+
+<Schema
+  {...require("./addshipmentrequest.Schema.json")}
+>
+  
+</Schema>
+            

@@ -79,10 +79,13 @@ const config: Config = {
             // the <id> referenced when running CLI commands
             specPath: 'openapis/integrations/swagger.yaml', // path to OpenAPI spec, URLs supported
             outputDir: 'docs/api', // output directory for generated files
+            showSchemas: true,
             sidebarOptions: {
               // optional, instructs plugin to generate sidebar.js
               groupPathsBy: 'tag', // group sidebar items by operation "tag"
               categoryLinkSource: 'tag',
+              sidebarCollapsible: true,
+              sidebarCollapsed: false,
             },
           },
         },

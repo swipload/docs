@@ -1,0 +1,1 @@
+{"schema":{"enum":["Standard","Return","PickupByCustomer"],"type":"string","description":"Freight type id enum.","x-enumNames":["Standard","Return","PickupByCustomer"],"x-enum-varnames":{"name":"FreightType","modelAsString":true},"x-ms-enum":{"name":"FreightType","modelAsString":true},"title":"FreightType"},"schemaType":"response"}

@@ -1,0 +1,1 @@
+{"schema":{"type":"object","properties":{"statusCode":{"type":"integer","format":"int32"}},"additionalProperties":false,"title":"UnauthorizedResult"},"schemaType":"response"}
