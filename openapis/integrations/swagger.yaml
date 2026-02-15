@@ -205,7 +205,7 @@ paths:
         '204':
           description: Price and expenses successfully updated.
         '400':
-          description: Bad request
+          description: Freight not found or invalid settlement data
           content:
             application/json:
               schema:
@@ -244,7 +244,7 @@ paths:
         '204':
           description: Price and expenses successfully updated.
         '400':
-          description: Bad request
+          description: Freight not found or invalid update data
           content:
             application/json:
               schema:
@@ -447,7 +447,7 @@ paths:
         '204':
           description: Price and expenses successfully updated.
         '400':
-          description: Bad request
+          description: Shipment not found or invalid settlement data
           content:
             application/json:
               schema:
@@ -473,9 +473,9 @@ paths:
             type: string
       responses:
         '204':
-          description: Price and expenses successfully updated.
+          description: Settlement confirmed successfully.
         '400':
-          description: Bad request
+          description: Shipment not found or no settlement to confirm
           content:
             application/json:
               schema:
@@ -701,10 +701,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentBase64ResultDto'
-          description: Gets or sets the document base64 results.
+          description: Results of any document uploads included with the freight
           nullable: true
       additionalProperties: false
-      description: A freight order for transport
+      description: Response returned after adding a freight to a shipment
     AddShipmentRequest:
       required:
         - externalShipmentId
@@ -755,16 +755,17 @@ components:
           example: FERS2794
         externalShipmentId:
           type: string
-          description: Gets or sets the external shipment identifier.
+          description: The external shipment identifier you provided in the request
           nullable: true
+          example: SH-2024-001
         freightResponses:
           type: array
           items:
             $ref: '#/components/schemas/AddFreightResponse'
-          description: Gets or sets the freight post responses.
+          description: Responses for each freight added to the shipment
           nullable: true
       additionalProperties: false
-      description: A shipment order for transport
+      description: Response returned after creating a shipment
     CarrierPriceSettlementAdditionalExpenseDto:
       required:
         - description
@@ -860,13 +861,19 @@ components:
       properties:
         fileName:
           type: string
+          description: Name of the uploaded file
           nullable: true
+          example: delivery_note.pdf
         success:
           type: boolean
+          description: Whether the upload was successful
+          example: true
         errorMessage:
           type: string
+          description: 'Error message if the upload failed, null on success'
           nullable: true
       additionalProperties: false
+      description: Result of a Base64 document upload operation
     ExternalUpdateFreightStatusCode:
       enum:
         - InTransit
@@ -1000,6 +1007,7 @@ components:
           nullable: true
           example: 1.1111
       additionalProperties: false
+      description: An individual cargo line item within a freight
     FreightLocationDto:
       type: object
       properties:
@@ -1055,6 +1063,7 @@ components:
           format: date-span
           nullable: true
       additionalProperties: false
+      description: 'A pickup or delivery location with address, coordinates, and time window'
     FreightLocationTimesPatchDto:
       type: object
       properties:
@@ -1071,6 +1080,7 @@ components:
           nullable: true
           example: 'UTC: 2026-01-19T08:00:00Z or Local: 2026-01-19T08:00:00+01:00'
       additionalProperties: false
+      description: Time window update for a pickup or delivery location
     FreightPatchRequest:
       type: object
       properties:
@@ -1341,7 +1351,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/DocumentBase64ResultDto'
-          description: Gets or sets the document base64 results.
+          description: Results of any document uploads included with the freight
           nullable: true
       additionalProperties: false
       description: Response returned after creating or updating a freight

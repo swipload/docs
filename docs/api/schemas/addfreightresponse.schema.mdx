@@ -1,12 +1,12 @@
 ---
 id: addfreightresponse
 title: "AddFreightResponse"
-description: "A freight order for transport"
+description: "Response returned after adding a freight to a shipment"
 sidebar_label: "AddFreightResponse"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"externalId":"a62f7d2b-2ddf-4c1c-9a93-98c39f05f382","reference":"DPOS4972","status":"Draft","documentBase64Results":[{"fileName":"string","success":true,"errorMessage":"string"}]}
+sample: {"externalId":"a62f7d2b-2ddf-4c1c-9a93-98c39f05f382","reference":"DPOS4972","status":"Draft","documentBase64Results":[{"fileName":"delivery_note.pdf","success":true,"errorMessage":"string"}]}
 custom_edit_url: null
 ---
 
@@ -22,7 +22,7 @@ import Heading from "@theme/Heading";
 
 
 
-A freight order for transport
+Response returned after adding a freight to a shipment
 
 <Schema
   {...require("./addfreightresponse.Schema.json")}
