@@ -1,0 +1,1 @@
+{"parameters":[{"name":"freightId","in":"path","description":"The Swipload freight id (not the Swipref reference)","required":true,"schema":{"type":"integer","format":"int32"}}]}

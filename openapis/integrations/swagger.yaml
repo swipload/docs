@@ -9,6 +9,40 @@ info:
     email: support@swipload.no
   version: v1
 paths:
+  /company/me:
+    get:
+      tags:
+        - Company
+      summary: Get current user company information
+      description: Retrieve information about the company associated with the current user.
+      operationId: CompanyGetUserCompany
+      responses:
+        '200':
+          description: Company information retrieved successfully.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/FreightCompanyResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightCompanyResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/FreightCompanyResponse'
+        '401':
+          description: Api-token missing or Unauthorized client
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '500':
+          description: Internal Server Error
   /freight:
     post:
       tags:
@@ -357,6 +391,48 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+  '/freight/{freightId}/send-to-carrier':
+    post:
+      tags:
+        - Freight
+      summary: Send a freight to a carrier
+      description: 'Send a Draft or Open freight to a carrier in the shipper''s network. The carrier is looked up by name (case-insensitive, partial match) and receives the shipment request on its booking email, with the carrier setting the price afterwards.'
+      operationId: FreightSendToCarrier
+      parameters:
+        - name: freightId
+          in: path
+          description: The Swipload freight id (not the Swipref reference)
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        description: The carrier to send the freight to. `carrierName` must match a company in the shipper's network that has a booking email.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightSendToCarrierRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/FreightSendToCarrierRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/FreightSendToCarrierRequest'
+      responses:
+        '200':
+          description: Freight successfully sent to the carrier.
+        '400':
+          description: 'Missing `carrierName`, or the freight could not be sent. `detail` is `AlreadySent`, `CarrierNotFoundInShipperNetwork` or `CarrierBookingEmailNotFound`.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: 'Api-token missing, Unauthorized client, or freight not found'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UnauthorizedResult'
   /requirement:
     get:
       tags:
@@ -491,7 +567,7 @@ paths:
       tags:
         - Shipment
       summary: Respond to a shipment request (accept or reject)
-      description: "This endpoint allows a carrier to accept or reject a shipment request.\nThe carrier must have a pending shipment request for this shipment."
+      description: "This endpoint allows a carrier to accept or reject a shipment request.\r\nThe carrier must have a pending shipment request for this shipment."
       operationId: ShipmentRespondToShipmentRequest
       parameters:
         - name: shipmentReference
@@ -543,6 +619,9 @@ components:
       properties:
         freightType:
           $ref: '#/components/schemas/FreightType'
+        isPickupByCustomer:
+          type: boolean
+          description: Picked by customer (optional)
         statusId:
           $ref: '#/components/schemas/FreightStatusCode'
         externalFreightId:
@@ -781,7 +860,7 @@ components:
           type: number
           description: Amount in NOK
           format: double
-          example: 350
+          example: 350.00
         includeInFuelExpense:
           type: boolean
           description: Whether this expense should be included in the fuel surcharge calculation
@@ -812,19 +891,19 @@ components:
           description: Total toll and ferry costs in NOK
           format: double
           nullable: true
-          example: 450
+          example: 450.00
         totalLoadingTimeCost:
           type: number
           description: Total loading time cost in NOK
           format: double
           nullable: true
-          example: 200
+          example: 200.00
         totalUnloadingTimeCost:
           type: number
           description: Total unloading time cost in NOK
           format: double
           nullable: true
-          example: 200
+          example: 200.00
         additionalExpenses:
           type: array
           items:
@@ -886,8 +965,9 @@ components:
         - Delivered
         - Cancelled
       x-enum-varnames:
-        name: ExternalUpdateFreightStatusCode
-        modelAsString: true
+        - InTransit
+        - Delivered
+        - Cancelled
       x-ms-enum:
         name: ExternalUpdateFreightStatusCode
         modelAsString: true
@@ -914,6 +994,34 @@ components:
           example: OXCQ134
       additionalProperties: false
       description: Request to update the carrier's reference on a freight
+    FreightCompanyResponse:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+          nullable: true
+        isShipper:
+          type: boolean
+        isCarrier:
+          type: boolean
+        address:
+          type: string
+          nullable: true
+        zipCode:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        countryCode:
+          type: string
+          nullable: true
+      additionalProperties: false
     FreightLineBaseDto:
       type: object
       properties:
@@ -1113,6 +1221,9 @@ components:
           example: a62f7d2b-2ddf-4c1c-9a93-98c39f05f382
         freightType:
           $ref: '#/components/schemas/FreightType'
+        isPickupByCustomer:
+          type: boolean
+          description: Picked by customer (optional)
         statusId:
           $ref: '#/components/schemas/FreightStatusCode'
         shippersReference:
@@ -1303,6 +1414,12 @@ components:
             $ref: '#/components/schemas/DocumentBase64Dto'
           description: 'Documents to attach to the freight (e.g. packing lists, CMR)'
           nullable: true
+        freightFeatures:
+          type: array
+          items:
+            type: string
+          description: List of freight features to associate with the freight. Get available features keys from the Requirement endpoint.
+          nullable: true
       additionalProperties: false
       description: A freight order for transport
     FreightPostResponse:
@@ -1355,6 +1472,16 @@ components:
           nullable: true
       additionalProperties: false
       description: Response returned after creating or updating a freight
+    FreightSendToCarrierRequest:
+      type: object
+      properties:
+        carrierName:
+          type: string
+          description: Name of the carrier company. Matched case-insensitively against the names of the companies in the shipper's network; a partial name is enough.
+          nullable: true
+          example: Cargo Carrier AS
+      additionalProperties: false
+      description: Request to send a freight to a carrier in the shipper's network
     FreightShippersReferenceUpdateRequest:
       required:
         - freightId
@@ -1397,8 +1524,15 @@ components:
         - PendingPickup
         - Cancelled
       x-enum-varnames:
-        name: FreightStatusCode
-        modelAsString: true
+        - Draft
+        - PendingApproval
+        - Open
+        - InTransit
+        - Delivered
+        - Deleted
+        - PendingDetails
+        - PendingPickup
+        - Cancelled
       x-ms-enum:
         name: FreightStatusCode
         modelAsString: true
@@ -1483,14 +1617,15 @@ components:
         - Return
         - PickupByCustomer
       type: string
-      description: Freight type id enum.
+      description: 'Freight type id enum (PickupByCustomer is obsolete, use IsPickupByCustomer property instead).'
       x-enumNames:
         - Standard
         - Return
         - PickupByCustomer
       x-enum-varnames:
-        name: FreightType
-        modelAsString: true
+        - Standard
+        - Return
+        - PickupByCustomer
       x-ms-enum:
         name: FreightType
         modelAsString: true
@@ -1539,8 +1674,8 @@ components:
         - Accept
         - Reject
       x-enum-varnames:
-        name: ShipmentRequestAction
-        modelAsString: true
+        - Accept
+        - Reject
       x-ms-enum:
         name: ShipmentRequestAction
         modelAsString: true
@@ -1551,6 +1686,11 @@ components:
       properties:
         action:
           $ref: '#/components/schemas/ShipmentRequestAction'
+        orderId:
+          type: string
+          description: This will be mapped to the carrier reference if the request is accepted
+          nullable: true
+          example: '12345'
       additionalProperties: false
       description: Request to respond to a shipment request (accept or reject)
     UnauthorizedResult:
