@@ -70,6 +70,12 @@ const sidebar: SidebarsConfig = {
           label: "Upload freight signature",
           className: "api-method put",
         },
+        {
+          type: "doc",
+          id: "api/freight-send-to-carrier",
+          label: "Send a freight to a carrier",
+          className: "api-method post",
+        },
       ],
     },
     {
@@ -122,6 +128,20 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/requirement-get-list",
           label: "Get the available freight requirements list",
+          className: "api-method get",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Company",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "api/company-get-user-company",
+          label: "Get current user company information",
           className: "api-method get",
         },
       ],
@@ -200,6 +220,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/schemas/freightcompanyresponse",
+          label: "FreightCompanyResponse",
+          className: "schema",
+        },
+        {
+          type: "doc",
           id: "api/schemas/freightlinebasedto",
           label: "FreightLineBaseDto",
           className: "schema",
@@ -232,6 +258,12 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/schemas/freightpostresponse",
           label: "FreightPostResponse",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/schemas/freightsendtocarrierrequest",
+          label: "FreightSendToCarrierRequest",
           className: "schema",
         },
         {
