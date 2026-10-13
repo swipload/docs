@@ -48,7 +48,7 @@ paths:
       tags:
         - Freight
       summary: Create a freight
-      description: Create a freight using your unique id as `ExternalId`. Called from Shipper's TMS.
+      description: Create a freight using your unique id as `ExternalId`. Called from Shipper's ERP.
       operationId: FreightCreate
       requestBody:
         content:
