@@ -1,0 +1,1 @@
+{"parameters":[{"name":"reference","in":"path","description":"The Swipload order reference (Swipref), e.g. DPOS4972","required":true,"schema":{"type":"string"}}]}

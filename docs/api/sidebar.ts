@@ -72,6 +72,12 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/freight-post-deviation",
+          label: "Register a deviation on an order",
+          className: "api-method post",
+        },
+        {
+          type: "doc",
           id: "api/freight-send-to-carrier",
           label: "Send a freight to a carrier",
           className: "api-method post",
@@ -196,6 +202,18 @@ const sidebar: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "api/schemas/deviationpostrequest",
+          label: "DeviationPostRequest",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/schemas/deviationpostresponse",
+          label: "DeviationPostResponse",
+          className: "schema",
+        },
+        {
+          type: "doc",
           id: "api/schemas/documentbase-64-dto",
           label: "DocumentBase64Dto",
           className: "schema",
@@ -204,6 +222,12 @@ const sidebar: SidebarsConfig = {
           type: "doc",
           id: "api/schemas/documentbase-64-resultdto",
           label: "DocumentBase64ResultDto",
+          className: "schema",
+        },
+        {
+          type: "doc",
+          id: "api/schemas/externaldeviationmoment",
+          label: "ExternalDeviationMoment",
           className: "schema",
         },
         {

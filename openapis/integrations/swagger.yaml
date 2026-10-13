@@ -391,6 +391,52 @@ paths:
                 $ref: '#/components/schemas/ProblemDetails'
         '401':
           description: Api-token missing or Unauthorized client
+  '/freight/{reference}/deviation':
+    post:
+      tags:
+        - Freight
+      summary: Register a deviation on an order
+      description: "Register a deviation (e.g. damaged goods, a failed pickup) on an existing order identified by its\nSwipload reference. The calling company must be the shipper or the carrier on the order, and the\ndeviation is attributed to the user the `api-token` resolves to.\n\n`DeviationMoment` is optional and is recorded as sent — it is not checked against the order's\nstatus. When it is omitted the moment is derived from that status instead: `Deliver` for an\norder that is `InTransit` or `Delivered`, `PickUp` for any earlier status. Either\nway the moment that was recorded is returned in the response.\nA deviation cannot be registered on an order that is `Draft`, `Cancelled` or\n`Deleted`.\nA supporting document is optional and may be supplied inline as `DocumentData` or by link as\n`DocumentURL`, but never both. A `DocumentURL` that cannot be downloaded does not fail\nthe request: the deviation is registered and the response reports `DocumentUploaded` as false\nwith the reason in `DocumentError`."
+      operationId: FreightPostDeviation
+      parameters:
+        - name: reference
+          in: path
+          description: 'The Swipload order reference (Swipref), e.g. DPOS4972'
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: The deviation to register
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviationPostRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/DeviationPostRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/DeviationPostRequest'
+        required: true
+      responses:
+        '200':
+          description: Deviation successfully registered.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviationPostResponse'
+        '400':
+          description: 'Order not found, order is Draft, Cancelled or Deleted, deviation moment outside PickUp and Deliver, invalid document data, both DocumentData and DocumentURL supplied, or an unsupported document format from DocumentURL'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+        '401':
+          description: 'Api-token missing, Unauthorized client, or the calling company is not the shipper or carrier on the order'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
   '/freight/{freightId}/send-to-carrier':
     post:
       tags:
@@ -567,7 +613,7 @@ paths:
       tags:
         - Shipment
       summary: Respond to a shipment request (accept or reject)
-      description: "This endpoint allows a carrier to accept or reject a shipment request.\r\nThe carrier must have a pending shipment request for this shipment."
+      description: "This endpoint allows a carrier to accept or reject a shipment request.\nThe carrier must have a pending shipment request for this shipment."
       operationId: ShipmentRespondToShipmentRequest
       parameters:
         - name: shipmentReference
@@ -915,6 +961,70 @@ components:
           description: If set to true the carrier settlement will be confirmed
       additionalProperties: false
       description: Carrier price settlement information for a freight
+    DeviationPostRequest:
+      required:
+        - description
+      type: object
+      properties:
+        deviationMoment:
+          $ref: '#/components/schemas/ExternalDeviationMoment'
+        description:
+          maxLength: 1000
+          minLength: 1
+          type: string
+          description: Description of the deviation
+          example: Pallet 3 was damaged on arrival
+        documentData:
+          $ref: '#/components/schemas/DocumentBase64Dto'
+        documentURL:
+          type: string
+          description: URL to a single externally hosted document supporting the deviation (Optional)
+          nullable: true
+          example: https://example.com/documents/damage_12345.jpg
+      additionalProperties: false
+      description: Request to register a deviation on an order
+    DeviationPostResponse:
+      required:
+        - createdDate
+        - description
+        - deviationMoment
+        - documentUploaded
+        - reference
+      type: object
+      properties:
+        reference:
+          minLength: 1
+          type: string
+          description: 'The Swipref, a unique id in Swipload'
+          example: COAZ481
+        deviationMoment:
+          $ref: '#/components/schemas/ExternalDeviationMoment'
+        description:
+          minLength: 1
+          type: string
+          description: Description of the deviation
+          example: Pallet 3 was damaged on arrival
+        createdDate:
+          type: string
+          description: Timestamp the deviation was registered
+          format: date-time
+          example: '2024-08-22T13:00:00'
+        createdByEmail:
+          type: string
+          description: Email of the user the api-token resolved to
+          nullable: true
+          example: integrations@example.com
+        documentUploaded:
+          type: boolean
+          description: Whether a document was stored with the deviation
+          example: true
+        documentError:
+          type: string
+          description: "Why no document was stored, when one was requested via DocumentURL but could not be\ndownloaded. The deviation itself was still registered. Null when a document was stored,\nand when none was supplied."
+          nullable: true
+          example: 'Failed to download document from URL. Status code: NotFound'
+      additionalProperties: false
+      description: Response returned after registering a deviation on an order
     DocumentBase64Dto:
       type: object
       properties:
@@ -953,6 +1063,21 @@ components:
           nullable: true
       additionalProperties: false
       description: Result of a Base64 document upload operation
+    ExternalDeviationMoment:
+      enum:
+        - PickUp
+        - Deliver
+      type: string
+      description: Enum for deviation moments that can be registered by external systems.
+      x-enumNames:
+        - PickUp
+        - Deliver
+      x-enum-varnames:
+        - PickUp
+        - Deliver
+      x-ms-enum:
+        name: ExternalDeviationMoment
+        modelAsString: true
     ExternalUpdateFreightStatusCode:
       enum:
         - InTransit
