@@ -1,0 +1,1 @@
+{"schema":{"enum":["PickUp","Deliver"],"type":"string","description":"Enum for deviation moments that can be registered by external systems.","x-enumNames":["PickUp","Deliver"],"x-enum-varnames":["PickUp","Deliver"],"x-ms-enum":{"name":"ExternalDeviationMoment","modelAsString":true},"title":"ExternalDeviationMoment"},"schemaType":"response"}
